@@ -889,9 +889,12 @@
           <a href="#" class="dropdown-toggle" id="callForPapersBtn">Call for Abstracts <span
               style="font-size: 0.8em; margin-left: 2px;">▼</span></a>
           <ul class="dropdown-menu" id="callForPapersMenu">
-            <li><a href="./../index.html#dates">Important Dates</a></li>
-            <li><a href="./../guidelines/index.html">Guidelines</a></li>
-            <li><a href="">Submit</a></li>
+            <li><a href="#dates">Important Dates</a></li>
+            <li><a href="guidelines/index.html">Guidelines</a></li>
+            <li><a href="docs/flyer.pdf" target="_blank" class="btn">📄 Download Flyer</a></li>
+            <!-- <li><a href="docs/brochure.pdf" target="_blank" class="btn">📋 Download Brochure</a></li> -->
+
+            <li><a href="https://cmt3.research.microsoft.com/RESCON2026">Submit</a></li>
           </ul>
         </li>
         <li><a href="./../index.html#themes">Themes</a></li>
@@ -1219,6 +1222,31 @@
         el.style.transition = `opacity 0.65s ease ${i * 0.12}s, transform 0.65s ease ${i * 0.12}s`;
         obs.observe(el);
       });
+    /* Dropdown Toggle Logic */
+    const callForPapersBtn = document.getElementById("callForPapersBtn");
+    const callForPapersMenu = document.getElementById("callForPapersMenu");
+
+    if (callForPapersBtn && callForPapersMenu) {
+      callForPapersBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        callForPapersMenu.classList.toggle("show");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest('.dropdown')) {
+          callForPapersMenu.classList.remove("show");
+        }
+      });
+
+      // Close dropdown when a submenu link is clicked
+      const subLinks = callForPapersMenu.querySelectorAll('a');
+      subLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          callForPapersMenu.classList.remove("show");
+        });
+      });
+    }
   </script>
 </body>
 
