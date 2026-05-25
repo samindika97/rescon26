@@ -901,7 +901,7 @@ img {
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 800px;
+  max-width: 1050px;
   animation: heroFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   margin-top: 5rem;
 }
@@ -915,6 +915,112 @@ img {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+.deadline-marquee-container {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #F29E4C 0%, #D6A436 100%); /* Solid high-contrast gold-orange gradient background */
+  border: 2px solid #FFFFFF;
+  border-radius: 50px;
+  padding: 0.65rem 1.5rem;
+  margin: 0 auto 2.5rem auto;
+  width: 100%;
+  max-width: 1000px; /* Expands to fill the wider hero content container */
+  color: #0F2D1D; /* Deepest forest green for superb readability and contrast on bright yellow/orange */
+  font-family: 'Inter', sans-serif;
+  font-size: 1.08rem;
+  font-weight: 700;
+  box-shadow: 0 15px 40px rgba(242, 158, 76, 0.4), 
+              0 0 25px rgba(242, 158, 76, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+}
+
+.deadline-marquee-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 18px 50px rgba(242, 158, 76, 0.6), 
+              0 0 35px rgba(242, 158, 76, 0.45),
+              inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.deadline-marquee-container .marquee-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #153A25; /* Solid deep forest-green badge */
+  color: #FFFFFF;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 0.35rem 1rem;
+  border-radius: 30px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(21, 58, 37, 0.3);
+  margin-right: 1.5rem;
+  position: relative;
+  z-index: 2;
+  animation: badgePulse 1.8s infinite ease-in-out;
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+.deadline-marquee-container marquee {
+  flex-grow: 1;
+  margin: 0;
+  vertical-align: middle;
+  letter-spacing: 0.5px;
+}
+
+.deadline-marquee-container marquee strong {
+  color: #FFFFFF;
+  background: #B22721; /* High-visibility warning-red pill for the date */
+  padding: 0.15rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  margin: 0 3px;
+  display: inline-block;
+}
+
+.deadline-marquee-container .marquee-sep {
+  color: #153A25;
+  margin: 0 2rem;
+  font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .deadline-marquee-container {
+    font-size: 0.95rem;
+    padding: 0.5rem 1.2rem;
+  }
+  .deadline-marquee-container .marquee-label {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .deadline-marquee-container {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .deadline-marquee-container .marquee-label {
+    font-size: 0.68rem;
+    padding: 0.25rem 0.6rem;
+    margin-right: 0.6rem;
   }
 }
 
