@@ -13,6 +13,31 @@
        SPEAKERS PAGE — ADDITIONAL STYLES
     ══════════════════════════════════════════ */
 
+    :root {
+      --r-lg: 20px;
+      --r-xl: 24px;
+      --r-pill: 100px;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --t: 0.28s;
+      --cream: #ffffff;
+      --offwhite: #ffffff;
+      --parchment: #eff5f1;
+      --saffron: #d6a436;
+      --terracotta: #b22721;
+      --teal-vivid: #00796b;
+      --amber-glow: #f29e4c;
+      --text-heading: #132b22;
+      --text-muted: #6b7f70;
+      --text-mid: #3b5849;
+      --shadow-md: 0 4px 20px rgba(22, 54, 36, 0.08);
+      --shadow-lg: 0 10px 30px rgba(22, 54, 36, 0.12);
+      --shadow-xl: 0 20px 40px rgba(22, 54, 36, 0.16);
+      --shadow-xs: 0 2px 8px rgba(22, 54, 36, 0.04);
+      --bark: #153a25;
+      --bark-lite: #246b3c;
+      --mahogany: #1b5e20;
+    }
+
     /* ── Page Hero ── */
     .page-hero {
       position: relative;
@@ -346,7 +371,7 @@
     /* ── KEYNOTE SPEAKER — large two-column alternating ── */
     .keynote-card {
       display: grid;
-      grid-template-columns: 360px 1fr;
+      grid-template-columns: 400px 1fr;
       gap: 0;
       border-radius: var(--r-xl);
       overflow: hidden;
@@ -369,14 +394,9 @@
       flex-direction: column;
       background: var(--cream);
       border-right: 1.5px solid rgba(44, 26, 14, 0.09);
-    }
-
-    .keynote-left-col .keynote-bio {
-      padding: 1.5rem 1.75rem;
-      max-height: 180px;
-      overflow-y: auto;
-      padding-right: 1.25rem;
-      border-top: 1px solid rgba(44, 26, 14, 0.06);
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
     }
 
     /* Alternate photo side */
@@ -389,82 +409,35 @@
     }
 
     .keynote-photo-panel {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: relative;
-      min-height: 280px;
-      overflow: hidden;
-    }
-
-    .keynote-photo-bg {
-      position: absolute;
-      inset: 0;
-    }
-
-    .keynote-photo-bg.bg-1 {
-      background: linear-gradient(145deg, var(--ocean) 0%, var(--bark) 100%);
-    }
-
-    .keynote-photo-bg.bg-2 {
-      background: linear-gradient(145deg, var(--moss) 0%, var(--bark) 100%);
     }
 
     .keynote-img {
       width: 100%;
-      height: 100%;
+      max-width: 300px;
+      aspect-ratio: 1 / 1;
       object-fit: cover;
-      object-position: top center;
+      object-position: center 20%;
+      border-radius: 24px;
       display: block;
-      position: absolute;
-      inset: 0;
-      mix-blend-mode: luminosity;
-      opacity: 0.78;
-      transition:
-        opacity 0.5s var(--ease),
-        transform 0.5s var(--ease);
+      background: linear-gradient(135deg, var(--white) 0%, var(--surface) 100%);
+      border: 4px solid var(--white);
+      box-shadow: 0 10px 30px rgba(21, 54, 36, 0.12), 
+                  0 2px 6px rgba(0, 0, 0, 0.04);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.4s ease;
     }
 
     .keynote-card:hover .keynote-img {
-      opacity: 0.9;
-      transform: scale(1.04);
-    }
-
-    .keynote-photo-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top,
-          rgba(44, 26, 14, 0.55) 0%,
-          transparent 50%);
-    }
-
-    .keynote-photo-info {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 1.6rem 1.8rem;
-      z-index: 2;
-    }
-
-    .keynote-photo-tag {
-      display: inline-block;
-      font-size: 0.66rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--sand);
-      background: rgba(44, 26, 14, 0.45);
-      border: 1px solid rgba(232, 201, 154, 0.25);
-      padding: 0.28rem 0.7rem;
-      border-radius: var(--r-pill);
-      margin-bottom: 0.45rem;
-      backdrop-filter: blur(6px);
-    }
-
-    .keynote-photo-name {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.15;
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(21, 54, 36, 0.18), 
+                  0 4px 10px rgba(21, 54, 36, 0.08);
+      border-color: var(--sky-mid);
     }
 
     .keynote-content-panel {
@@ -621,7 +594,7 @@
 
     .plenary-photo-wrap {
       position: relative;
-      height: 240px;
+      height: 280px;
       overflow: hidden;
       flex-shrink: 0;
     }
@@ -871,7 +844,7 @@
       }
 
       .keynote-card {
-        grid-template-columns: 320px 1fr;
+        grid-template-columns: 350px 1fr;
       }
     }
 
@@ -899,20 +872,11 @@
       .keynote-left-col {
         border-right: none;
         border-bottom: 1.5px solid rgba(44, 26, 14, 0.09);
-      }
-
-      .keynote-left-col .keynote-bio {
-        padding: 1.25rem 1.5rem;
-        max-height: 160px;
-        padding-right: 1rem;
+        padding: 1.5rem;
       }
 
       .keynote-card.flip {
         direction: ltr;
-      }
-
-      .keynote-photo-panel {
-        min-height: 240px;
       }
 
       .keynote-content-panel {
@@ -1035,15 +999,20 @@
       <div class="keynote-card" id="k-suniti">
         <div class="keynote-left-col">
           <div class="keynote-photo-panel">
-            <div class="keynote-photo-bg bg-1"></div>
             <img class="keynote-img" src="./../media/speakers/Professor Suniti.png" alt="Prof. Suniti Karunatillake"
               onerror="this.style.display = 'none'" />
-            <div class="keynote-photo-overlay"></div>
-            <div class="keynote-photo-info">
-              <div class="keynote-photo-tag">🎤 Keynote Speaker</div>
-              <div class="keynote-photo-name">Prof. Suniti Karunatillake</div>
-            </div>
           </div>
+        </div>
+
+        <div class="keynote-content-panel">
+          <span class="spk-cat-label cat-keynote" style="margin-bottom: 1rem">Keynote Speaker</span>
+          <h2 class="keynote-name">Prof. Suniti Karunatillake</h2>
+          <div class="keynote-role">
+            Professor in Planetary Science, Remote Sensing and Exobiology
+          </div>
+          <div class="keynote-dept">Department of Geology and Geophysics</div>
+          <div class="keynote-uni">Louisiana State University, USA</div>
+
           <div class="keynote-bio">
             <p>
               Dr. Suniti Karunatillake is a planetary scientist and Associate Professor in the Department of
@@ -1063,34 +1032,6 @@
               the potential for past habitability and biosignature preservation on Mars.
             </p>
           </div>
-        </div>
-
-        <div class="keynote-content-panel">
-          <span class="spk-cat-label cat-keynote" style="margin-bottom: 1rem">Keynote Speaker</span>
-          <h2 class="keynote-name">Prof. Suniti Karunatillake</h2>
-          <div class="keynote-role">
-            Professor in Planetary Science, Remote Sensing and Exobiology
-          </div>
-          <div class="keynote-dept">Department of Geology and Geophysics</div>
-          <div class="keynote-uni">Louisiana State University, USA</div>
-          <!-- <div class="keynote-divider"></div> -->
-
-          <div class="keynote-tags">
-            <span class="keynote-tag">🪐 Planetary Science</span>
-            <span class="keynote-tag">📡 Remote Sensing</span>
-            <span class="keynote-tag">🧬 Exobiology</span>
-            <span class="keynote-tag">🌍 Geology</span>
-            <span class="keynote-tag">⚡ Geophysics</span>
-          </div>
-
-          <div class="credential-pills" style="margin-top: 1.5rem">
-            <span class="credential-pill"><span class="cp-icon">🎓</span> Ph.D. in Planetary
-              Science</span>
-            <span class="credential-pill"><span class="cp-icon">📄</span> Numerous Publications</span>
-            <span class="credential-pill"><span class="cp-icon">🚀</span> Planetary Missions
-              Contributor</span>
-            <span class="credential-pill"><span class="cp-icon">🌌</span> Astrobiology Research</span>
-          </div>
           <div style="margin-top: 1.5rem;">
             <a href="./../docs/SK CV.pdf" class="btn btn-primary btn-sm" target="_blank"
               rel="noopener noreferrer">Curriculum Vitae</a>
@@ -1101,15 +1042,22 @@
       <div class="keynote-card" id="k-zhao">
         <div class="keynote-left-col">
           <div class="keynote-photo-panel">
-            <div class="keynote-photo-bg bg-2"></div>
             <img class="keynote-img" src="./../media/speakers/Yuyan Zhao.jpg" alt="Prof. Zhao Yuyan"
               onerror="this.style.display = 'none'" />
-            <div class="keynote-photo-overlay"></div>
-            <div class="keynote-photo-info">
-              <div class="keynote-photo-tag" style="color: white;">🎤 Keynote Speaker</div>
-              <div class="keynote-photo-name">Prof. Zhao Yuyan</div>
-            </div>
           </div>
+        </div>
+
+        <div class="keynote-content-panel">
+          <span class="spk-cat-label cat-keynote" style="margin-bottom: 1rem">Keynote Speaker</span>
+          <h2 class="keynote-name">Prof. Zhao Yuyan</h2>
+          <div class="keynote-role">Professor in Planetary Sciences</div>
+          <div class="keynote-dept">
+            International Research Center for Planetary Sciences
+          </div>
+          <div class="keynote-uni">
+            Chengdu University of Technology (CDUT), China
+          </div>
+
           <div class="keynote-bio">
             <p>
               Dr. Yuyan (Sara) Zhao is a Professor at the Research Center for Planetary Science within the
@@ -1142,34 +1090,6 @@
               geochemistry, Dr. Zhao’s interdisciplinary contributions have positioned her as a leading
               voice in unraveling Mars’ complex environmental history on the global stage.
             </p>
-          </div>
-        </div>
-
-        <div class="keynote-content-panel">
-          <span class="spk-cat-label cat-keynote" style="margin-bottom: 1rem">Keynote Speaker</span>
-          <h2 class="keynote-name">Prof. Zhao Yuyan</h2>
-          <div class="keynote-role">Professor in Planetary Sciences</div>
-          <div class="keynote-dept">
-            International Research Center for Planetary Sciences
-          </div>
-          <div class="keynote-uni">
-            Chengdu University of Technology (CDUT), China
-          </div>
-          <!-- <div class="keynote-divider"></div> -->
-
-          <div class="keynote-tags">
-            <span class="keynote-tag">🪐 Planetary Sciences</span>
-            <span class="keynote-tag">🌍 Planetary Geology</span>
-            <span class="keynote-tag">🔭 Planetary Exploration</span>
-            <span class="keynote-tag">🧪 Experimental Geochemistry</span>
-            <span class="keynote-tag">❄️ Planetary Cryosphere</span>
-          </div>
-
-          <div class="credential-pills" style="margin-top: 1.5rem">
-            <span class="credential-pill"><span class="cp-icon">🎓</span> Ph.D. in Geoscience</span>
-            <span class="credential-pill"><span class="cp-icon">📄</span> Extensive Publications</span>
-            <span class="credential-pill"><span class="cp-icon">🚀</span> Mars Exploration Mission Scientist</span>
-            <span class="credential-pill"><span class="cp-icon">🏆</span> CAS Research Fellow</span>
           </div>
           <div style="margin-top: 1.5rem;">
             <a href="./../docs/Zhao CV.pdf" class="btn btn-primary btn-sm" target="_blank"
