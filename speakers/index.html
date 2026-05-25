@@ -346,7 +346,7 @@
     /* ── KEYNOTE SPEAKER — large two-column alternating ── */
     .keynote-card {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 360px 1fr;
       gap: 0;
       border-radius: var(--r-xl);
       overflow: hidden;
@@ -364,6 +364,21 @@
       transform: translateY(-4px);
     }
 
+    .keynote-left-col {
+      display: flex;
+      flex-direction: column;
+      background: var(--cream);
+      border-right: 1.5px solid rgba(44, 26, 14, 0.09);
+    }
+
+    .keynote-left-col .keynote-bio {
+      padding: 1.5rem 1.75rem;
+      max-height: 180px;
+      overflow-y: auto;
+      padding-right: 1.25rem;
+      border-top: 1px solid rgba(44, 26, 14, 0.06);
+    }
+
     /* Alternate photo side */
     .keynote-card.flip {
       direction: rtl;
@@ -375,7 +390,7 @@
 
     .keynote-photo-panel {
       position: relative;
-      min-height: 440px;
+      min-height: 280px;
       overflow: hidden;
     }
 
@@ -453,7 +468,7 @@
     }
 
     .keynote-content-panel {
-      padding: 3rem 2.8rem;
+      padding: 2.2rem 2.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -514,11 +529,13 @@
 
     .keynote-bio {
       color: var(--text-mid);
-      font-size: 0.93rem;
-      line-height: 1.82;
+      font-size: 0.88rem;
+      line-height: 1.7;
       max-height: 220px;
       overflow-y: auto;
       padding-right: 0.5rem;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(44, 26, 14, 0.15) rgba(44, 26, 14, 0.05);
     }
 
     .keynote-bio p+p {
@@ -733,18 +750,21 @@
     .plenary-bio::-webkit-scrollbar {
       width: 6px;
     }
+
     .chief-bio::-webkit-scrollbar-track,
     .keynote-bio::-webkit-scrollbar-track,
     .plenary-bio::-webkit-scrollbar-track {
       background: rgba(44, 26, 14, 0.05);
       border-radius: 4px;
     }
+
     .chief-bio::-webkit-scrollbar-thumb,
     .keynote-bio::-webkit-scrollbar-thumb,
     .plenary-bio::-webkit-scrollbar-thumb {
       background: rgba(44, 26, 14, 0.15);
       border-radius: 4px;
     }
+
     .chief-bio::-webkit-scrollbar-thumb:hover,
     .keynote-bio::-webkit-scrollbar-thumb:hover,
     .plenary-bio::-webkit-scrollbar-thumb:hover {
@@ -851,7 +871,7 @@
       }
 
       .keynote-card {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 320px 1fr;
       }
     }
 
@@ -876,12 +896,23 @@
         grid-template-columns: 1fr;
       }
 
+      .keynote-left-col {
+        border-right: none;
+        border-bottom: 1.5px solid rgba(44, 26, 14, 0.09);
+      }
+
+      .keynote-left-col .keynote-bio {
+        padding: 1.25rem 1.5rem;
+        max-height: 160px;
+        padding-right: 1rem;
+      }
+
       .keynote-card.flip {
         direction: ltr;
       }
 
       .keynote-photo-panel {
-        min-height: 300px;
+        min-height: 240px;
       }
 
       .keynote-content-panel {
@@ -963,7 +994,7 @@
       </div>
       <div class="page-hero-badge">🎤 RESCON 2026</div>
       <h1 class="page-hero-title">
-        Invited<br /><span>Speakers</span>
+        Keynote<br /><span>Speakers</span>
       </h1>
       <p class="page-hero-desc">
         World-class scientists, researchers, and thought leaders sharing
@@ -1002,26 +1033,17 @@
 
       <!-- Keynote 1 — Prof. Suniti Karunatillake -->
       <div class="keynote-card" id="k-suniti">
-        <div class="keynote-photo-panel">
-          <div class="keynote-photo-bg bg-1"></div>
-          <img class="keynote-img" src="./../media/speakers/Professor Suniti.png" alt="Prof. Suniti Karunatillake"
-            onerror="this.style.display = 'none'" />
-          <div class="keynote-photo-overlay"></div>
-          <div class="keynote-photo-info">
-            <div class="keynote-photo-tag">🎤 Keynote Speaker</div>
-            <div class="keynote-photo-name">Prof. Suniti Karunatillake</div>
+        <div class="keynote-left-col">
+          <div class="keynote-photo-panel">
+            <div class="keynote-photo-bg bg-1"></div>
+            <img class="keynote-img" src="./../media/speakers/Professor Suniti.png" alt="Prof. Suniti Karunatillake"
+              onerror="this.style.display = 'none'" />
+            <div class="keynote-photo-overlay"></div>
+            <div class="keynote-photo-info">
+              <div class="keynote-photo-tag">🎤 Keynote Speaker</div>
+              <div class="keynote-photo-name">Prof. Suniti Karunatillake</div>
+            </div>
           </div>
-        </div>
-
-        <div class="keynote-content-panel">
-          <span class="spk-cat-label cat-keynote" style="margin-bottom: 1rem">Keynote Speaker</span>
-          <h2 class="keynote-name">Prof. Suniti Karunatillake</h2>
-          <div class="keynote-role">
-            Professor in Planetary Science, Remote Sensing and Exobiology
-          </div>
-          <div class="keynote-dept">Department of Geology and Geophysics</div>
-          <div class="keynote-uni">Louisiana State University, USA</div>
-          <!-- <div class="keynote-divider"></div> -->
           <div class="keynote-bio">
             <p>
               Dr. Suniti Karunatillake is a planetary scientist and Associate Professor in the Department of
@@ -1040,17 +1062,19 @@
               understanding of Martian surface processes, crustal evolution, hydrothermal activity, and
               the potential for past habitability and biosignature preservation on Mars.
             </p>
-            <p>
-              Dr. Karunatillake earned a BA in Physics from Wabash College and a PhD in Physics,
-              Astronomy, and Planetary Science from Cornell University, followed by postdoctoral
-              research at Stony Brook University. Over the course of his career, he has contributed
-              extensively to planetary science through interdisciplinary research, NASA-funded projects,
-              mission concept development, and international collaborations. His work has advanced
-              understanding of Martian surface processes, crustal evolution, hydrothermal activity, and
-              the potential for past habitability and biosignature preservation on Mars.
-            </p>
-
           </div>
+        </div>
+
+        <div class="keynote-content-panel">
+          <span class="spk-cat-label cat-keynote" style="margin-bottom: 1rem">Keynote Speaker</span>
+          <h2 class="keynote-name">Prof. Suniti Karunatillake</h2>
+          <div class="keynote-role">
+            Professor in Planetary Science, Remote Sensing and Exobiology
+          </div>
+          <div class="keynote-dept">Department of Geology and Geophysics</div>
+          <div class="keynote-uni">Louisiana State University, USA</div>
+          <!-- <div class="keynote-divider"></div> -->
+
           <div class="keynote-tags">
             <span class="keynote-tag">🪐 Planetary Science</span>
             <span class="keynote-tag">📡 Remote Sensing</span>
@@ -1074,30 +1098,18 @@
         </div>
       </div>
 
-      <!-- Keynote 2 — Prof. Zhao Yuyan (flipped) -->
-      <div class="keynote-card flip" id="k-zhao">
-        <div class="keynote-photo-panel">
-          <div class="keynote-photo-bg bg-2"></div>
-          <img class="keynote-img" src="./../media/speakers/Yuyan Zhao.jpg" alt="Prof. Zhao Yuyan"
-            onerror="this.style.display = 'none'" />
-          <div class="keynote-photo-overlay"></div>
-          <div class="keynote-photo-info">
-            <div class="keynote-photo-tag" style="color: white;">🎤 Keynote Speaker</div>
-            <div class="keynote-photo-name">Prof. Zhao Yuyan</div>
+      <div class="keynote-card" id="k-zhao">
+        <div class="keynote-left-col">
+          <div class="keynote-photo-panel">
+            <div class="keynote-photo-bg bg-2"></div>
+            <img class="keynote-img" src="./../media/speakers/Yuyan Zhao.jpg" alt="Prof. Zhao Yuyan"
+              onerror="this.style.display = 'none'" />
+            <div class="keynote-photo-overlay"></div>
+            <div class="keynote-photo-info">
+              <div class="keynote-photo-tag" style="color: white;">🎤 Keynote Speaker</div>
+              <div class="keynote-photo-name">Prof. Zhao Yuyan</div>
+            </div>
           </div>
-        </div>
-
-        <div class="keynote-content-panel">
-          <span class="spk-cat-label cat-keynote" style="margin-bottom: 1rem">Keynote Speaker</span>
-          <h2 class="keynote-name">Prof. Zhao Yuyan</h2>
-          <div class="keynote-role">Professor in Planetary Sciences</div>
-          <div class="keynote-dept">
-            International Research Center for Planetary Sciences
-          </div>
-          <div class="keynote-uni">
-            Chengdu University of Technology (CDUT), China
-          </div>
-          <!-- <div class="keynote-divider"></div> -->
           <div class="keynote-bio">
             <p>
               Dr. Yuyan (Sara) Zhao is a Professor at the Research Center for Planetary Science within the
@@ -1131,6 +1143,20 @@
               voice in unraveling Mars’ complex environmental history on the global stage.
             </p>
           </div>
+        </div>
+
+        <div class="keynote-content-panel">
+          <span class="spk-cat-label cat-keynote" style="margin-bottom: 1rem">Keynote Speaker</span>
+          <h2 class="keynote-name">Prof. Zhao Yuyan</h2>
+          <div class="keynote-role">Professor in Planetary Sciences</div>
+          <div class="keynote-dept">
+            International Research Center for Planetary Sciences
+          </div>
+          <div class="keynote-uni">
+            Chengdu University of Technology (CDUT), China
+          </div>
+          <!-- <div class="keynote-divider"></div> -->
+
           <div class="keynote-tags">
             <span class="keynote-tag">🪐 Planetary Sciences</span>
             <span class="keynote-tag">🌍 Planetary Geology</span>
