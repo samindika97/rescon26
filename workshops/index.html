@@ -2,1336 +2,1562 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pre-Conference Workshops — RESCON 2026 | PGIS</title>
-  <meta name="description"
-    content="Pre-Conference Workshops for RESCON 2026 at Postgraduate Institute of Science, University of Peradeniya." />
-  <link rel="stylesheet" href="./../style.css" />
-  <style>
-    /* ── WORKSHOPS PAGE SPECIFIC STYLES ── */
-
-    /* Page hero — compact inner-page version */
-    .page-hero {
-      position: relative;
-      min-height: 44vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: calc(var(--nav-h) + 4rem) 2rem 4rem;
-      overflow: hidden;
-      background: linear-gradient(135deg,
-          rgba(24, 66, 40, 0.96),
-          rgba(46, 97, 58, 0.96));
-    }
-
-    .page-hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: transparent;
-      pointer-events: none;
-    }
-
-    .page-hero-rings {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-    }
-
-    .page-hero-rings .ring {
-      border-color: rgba(232, 201, 154, 0.06);
-    }
-
-    .page-hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 760px;
-    }
-
-    .page-hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--saffron);
-      background: rgba(244, 166, 35, 0.15);
-      border: 1px solid rgba(244, 166, 35, 0.3);
-      padding: 0.4rem 1.2rem;
-      border-radius: var(--r-pill);
-      margin-bottom: 1.2rem;
-    }
-
-    .page-hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      font-weight: 700;
-      color: var(--offwhite);
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-    }
-
-    .page-hero-title span {
-      color: var(--saffron);
-    }
-
-    .page-hero-desc {
-      font-size: 1rem;
-      color: rgba(248, 238, 224, 0.7);
-      max-width: 520px;
-      margin: 0 auto 2rem;
-      line-height: 1.75;
-    }
-
-    .breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-      color: rgba(232, 201, 154, 0.5);
-      justify-content: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .breadcrumb a {
-      color: rgba(232, 201, 154, 0.65);
-      transition: color var(--t) var(--ease);
-    }
-
-    .breadcrumb a:hover {
-      color: var(--sand);
-    }
-
-    .breadcrumb .sep {
-      opacity: 0.4;
-    }
-
-    /* Workshop nav tabs */
-    .ws-tabs {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 2.5rem 0;
-      background: var(--cream);
-      border-bottom: 1px solid rgba(44, 26, 14, 0.08);
-      position: sticky;
-      top: var(--nav-h);
-      z-index: 100;
-      backdrop-filter: blur(10px);
-    }
-
-    .ws-tab {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.55rem 1.25rem;
-      border-radius: var(--r-pill);
-      font-size: 0.84rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      background: transparent;
-      border: 1.5px solid rgba(44, 26, 14, 0.12);
-      cursor: pointer;
-      transition: all var(--t) var(--ease);
-      text-decoration: none;
-    }
-
-    .ws-tab:hover {
-      background: var(--parchment);
-      border-color: rgba(192, 91, 58, 0.25);
-      color: var(--bark);
-    }
-
-    .ws-tab.active {
-      background: linear-gradient(135deg, var(--terracotta), var(--rust));
-      border-color: transparent;
-      color: #fff;
-      box-shadow: 0 4px 14px rgba(192, 91, 58, 0.35);
-    }
-
-    .ws-tab .tab-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      font-size: 0.7rem;
-      font-weight: 700;
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    /* Main workshops container */
-    .workshops-wrap {
-      padding: 5rem 0 6rem;
-    }
-
-    /* Individual workshop block */
-    .workshop-block {
-      margin-bottom: 6rem;
-      padding-bottom: 6rem;
-      border-bottom: 1px solid rgba(44, 26, 14, 0.08);
-      scroll-margin-top: calc(var(--nav-h) + 90px);
-    }
-
-    .workshop-block:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-
-    /* Workshop header row */
-    .ws-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 2rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .ws-number {
-      flex-shrink: 0;
-      width: 64px;
-      height: 64px;
-      border-radius: var(--r);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #fff;
-      position: relative;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .ws-number-1 {
-      background: linear-gradient(135deg, var(--teal-vivid), var(--ocean));
-    }
-
-    .ws-number-2 {
-      background: linear-gradient(135deg, var(--violet), var(--plum));
-    }
-
-    .ws-number-3 {
-      background: linear-gradient(135deg, var(--moss), var(--fern));
-    }
-
-    .ws-number-4 {
-      background: linear-gradient(135deg, var(--amber-glow), var(--gold));
-    }
-
-    .ws-number-5 {
-      background: linear-gradient(135deg, var(--terracotta), var(--rust));
-    }
-
-    .ws-header-text {
-      flex: 1;
-    }
-
-    .ws-series-label {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      margin-bottom: 0.5rem;
-    }
-
-    .ws-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.4rem, 3vw, 2.1rem);
-      font-weight: 700;
-      color: var(--text-heading);
-      line-height: 1.2;
-      margin-bottom: 0.9rem;
-    }
-
-    .ws-meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-    }
-
-    .ws-meta-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      padding: 0.3rem 0.85rem;
-      border-radius: var(--r-pill);
-      background: var(--cream);
-      color: var(--text-mid);
-      border: 1px solid rgba(44, 26, 14, 0.1);
-    }
-
-    .ws-meta-pill .pill-icon {
-      font-size: 0.9rem;
-    }
-
-    /* Content layout: description + speakers */
-    .ws-body {
-      display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 3rem;
-      align-items: start;
-      margin-bottom: 2.5rem;
-    }
-
-    .ws-body-full {
-      grid-template-columns: 1fr;
-    }
-
-    .ws-description p {
-      color: var(--text-mid);
-      font-size: 0.97rem;
-      line-height: 1.82;
-      margin-bottom: 1rem;
-    }
-
-    .ws-description p:last-child {
-      margin-bottom: 0;
-    }
-
-    .ws-description strong {
-      color: var(--bark);
-      font-weight: 600;
-    }
-
-    .ws-description ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin: 1rem 0 1.2rem;
-    }
-
-    .ws-description ul li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      font-size: 0.93rem;
-      color: var(--text-mid);
-      line-height: 1.65;
-    }
-
-    .ws-description ul li::before {
-      content: "▸";
-      color: var(--terracotta);
-      font-size: 0.65rem;
-      flex-shrink: 0;
-      margin-top: 0.35em;
-    }
-
-    .ws-flyer-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 1.2rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--terracotta);
-      border: 1.5px solid rgba(192, 91, 58, 0.3);
-      background: rgba(192, 91, 58, 0.05);
-      padding: 0.5rem 1.1rem;
-      border-radius: var(--r-sm);
-      transition: all var(--t) var(--ease);
-    }
-
-    .ws-flyer-link:hover {
-      background: rgba(192, 91, 58, 0.1);
-      border-color: var(--terracotta);
-      transform: translateY(-1px);
-    }
-
-    /* Speaker cards sidebar */
-    .ws-speakers {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .ws-speaker-card {
-      background: var(--offwhite);
-      border: 1.5px solid rgba(44, 26, 14, 0.08);
-      border-radius: var(--r);
-      padding: 1.4rem 1.2rem;
-      text-align: center;
-      box-shadow: var(--shadow-xs);
-      transition: all var(--t) var(--ease);
-    }
-
-    .ws-speaker-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-      border-color: rgba(192, 91, 58, 0.2);
-    }
-
-    .ws-speaker-avatar {
-      width: 82px;
-      height: 82px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: top center;
-      border: 3px solid rgba(232, 201, 154, 0.55);
-      margin: 0 auto 0.85rem;
-      display: block;
-      transition: all var(--t) var(--ease);
-    }
-
-    .ws-speaker-card:hover .ws-speaker-avatar {
-      border-color: var(--terracotta);
-      transform: scale(1.05);
-    }
-
-    .ws-speaker-avatar-placeholder {
-      width: 82px;
-      height: 82px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--bark-lite), var(--mahogany));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--sand);
-      margin: 0 auto 0.85rem;
-      border: 3px solid rgba(232, 201, 154, 0.25);
-    }
-
-    .ws-speaker-name {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--bark);
-      margin-bottom: 0.2rem;
-    }
-
-    .ws-speaker-title {
-      font-size: 0.76rem;
-      color: var(--terracotta);
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-      line-height: 1.4;
-    }
-
-    .ws-speaker-affil {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* Photo gallery */
-    .ws-gallery-wrap {
-      margin-top: 2rem;
-    }
-
-    .ws-gallery-label {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .ws-gallery-label span {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .ws-gallery-label::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: rgba(44, 26, 14, 0.1);
-    }
-
-    .ws-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 0.75rem;
-    }
-
-    .ws-gallery-img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      border-radius: var(--r-sm);
-      display: block;
-      transition:
-        transform 0.4s var(--ease),
-        box-shadow 0.4s var(--ease),
-        filter 0.4s var(--ease);
-      cursor: zoom-in;
-      filter: brightness(0.96) saturate(0.92);
-    }
-
-    .ws-gallery-img:hover {
-      transform: scale(1.04);
-      box-shadow: var(--shadow-md);
-      filter: brightness(1.04) saturate(1.05);
-      z-index: 2;
-      position: relative;
-    }
-
-    /* Lightbox */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(28, 14, 6, 0.95);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      cursor: zoom-out;
-    }
-
-    .lightbox.open {
-      display: flex;
-    }
-
-    .lightbox-img {
-      max-width: 90vw;
-      max-height: 85vh;
-      object-fit: contain;
-      border-radius: var(--r);
-      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
-    }
-
-    .lightbox-close {
-      position: fixed;
-      top: 1.5rem;
-      right: 1.75rem;
-      color: rgba(232, 201, 154, 0.7);
-      font-size: 2rem;
-      cursor: pointer;
-      line-height: 1;
-      background: none;
-      border: none;
-      transition: color var(--t) var(--ease);
-      z-index: 10000;
-    }
-
-    .lightbox-close:hover {
-      color: var(--sand);
-    }
-
-    .lightbox-nav {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      color: rgba(232, 201, 154, 0.7);
-      font-size: 2rem;
-      cursor: pointer;
-      background: rgba(44, 26, 14, 0.6);
-      border: none;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--t) var(--ease);
-      z-index: 10000;
-    }
-
-    .lightbox-nav:hover {
-      background: rgba(192, 91, 58, 0.8);
-      color: #fff;
-    }
-
-    .lightbox-prev {
-      left: 1rem;
-    }
-
-    .lightbox-next {
-      right: 1rem;
-    }
-
-    .lightbox-counter {
-      position: fixed;
-      bottom: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: rgba(232, 201, 154, 0.5);
-      font-size: 0.82rem;
-      letter-spacing: 0.1em;
-    }
-
-    /* Status badge — completed / upcoming */
-    .ws-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.28rem 0.75rem;
-      border-radius: var(--r-pill);
-    }
-
-    .ws-status-done {
-      background: rgba(61, 107, 69, 0.12);
-      color: var(--moss);
-      border: 1px solid rgba(61, 107, 69, 0.25);
-    }
-
-    .ws-status-upcoming {
-      background: rgba(232, 150, 12, 0.12);
-      color: var(--amber-glow);
-      border: 1px solid rgba(232, 150, 12, 0.28);
-    }
-
-    .ws-status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: currentColor;
-    }
-
-    .ws-status-done .ws-status-dot {
-      animation: none;
-    }
-
-    .ws-status-upcoming .ws-status-dot {
-      animation: blink 1.4s ease-in-out infinite;
-    }
-
-    @keyframes blink {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.3;
-      }
-    }
-
-    /* Timeline sidebar (left accent) */
-    .workshops-inner {
-      position: relative;
-      padding-left: 2rem;
-    }
-
-    .workshops-inner::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: linear-gradient(180deg,
-          var(--terracotta) 0%,
-          var(--amber-glow) 30%,
-          var(--moss) 60%,
-          var(--violet) 80%,
-          rgba(44, 26, 14, 0.1) 100%);
-      border-radius: var(--r-pill);
-    }
-
-    /* Stats strip */
-    .ws-stats-strip {
-      background: linear-gradient(135deg,
-          var(--bark) 0%,
-          var(--bark-lite) 100%);
-      border-radius: var(--r-lg);
-      padding: 2.25rem 2.5rem;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-bottom: 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .ws-stats-strip::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 70% at 10% 50%,
-          rgba(192, 91, 58, 0.18) 0%,
-          transparent 55%),
-        radial-gradient(ellipse 50% 60% at 90% 50%,
-          rgba(13, 138, 122, 0.12) 0%,
-          transparent 55%);
-    }
-
-    .ws-stat-item {
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .ws-stat-num {
-      font-family: var(--font-display);
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--saffron);
-      line-height: 1;
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-
-    .ws-stat-label {
-      font-size: 0.78rem;
-      color: rgba(248, 238, 224, 0.55);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-    }
-
-    .ws-stat-sep {
-      position: absolute;
-      right: 0;
-      top: 15%;
-      height: 70%;
-      width: 1px;
-      background: rgba(232, 201, 154, 0.12);
-    }
-
-    .ws-stat-item:last-child .ws-stat-sep {
-      display: none;
-    }
-
-    /* Upcoming notice card */
-    .upcoming-notice {
-      background: linear-gradient(135deg,
-          rgba(232, 150, 12, 0.08),
-          rgba(232, 201, 154, 0.06));
-      border: 1.5px solid rgba(232, 150, 12, 0.25);
-      border-radius: var(--r);
-      padding: 1.4rem 1.6rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .upcoming-notice-icon {
-      font-size: 1.6rem;
-      flex-shrink: 0;
-    }
-
-    .upcoming-notice h4 {
-      font-size: 0.95rem;
-      color: var(--amber-glow);
-      margin-bottom: 0.35rem;
-    }
-
-    .upcoming-notice p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .ws-body {
-        grid-template-columns: 1fr;
-      }
-
-      .ws-speakers {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .ws-speaker-card {
-        width: 200px;
-      }
-
-      .ws-stats-strip {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .ws-header {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .ws-gallery {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      }
-
-      .ws-tabs {
-        padding: 1.5rem 1rem;
-        gap: 0.4rem;
-      }
-
-      .ws-tab {
-        font-size: 0.78rem;
-        padding: 0.45rem 0.9rem;
-      }
-
-      .workshops-inner {
-        padding-left: 0;
-      }
-
-      .workshops-inner::before {
-        display: none;
-      }
-
-      .ws-stats-strip {
-        grid-template-columns: 1fr 1fr;
-        padding: 1.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pre-Conference Workshops — RESCON 2026 | PGIS</title>
+    <meta name="description"
+        content="Pre-Conference Workshops for RESCON 2026 at Postgraduate Institute of Science, University of Peradeniya." />
+    <link rel="stylesheet" href="./../style.css" />
+    <style>
+        :root {
+            --r-lg: 20px;
+            --r-xl: 24px;
+            --r-pill: 100px;
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+            --t: 0.28s;
+            --cream: #ffffff;
+            --offwhite: #ffffff;
+            --parchment: #eff5f1;
+            --saffron: #d6a436;
+            --terracotta: #b22721;
+            --rust: #9e2a2b;
+            --teal-vivid: #00796b;
+            --ocean: #00897b;
+            --violet: #673ab7;
+            --plum: #880e4f;
+            --moss: #43a047;
+            --fern: #2e7d32;
+            --amber-glow: #f29e4c;
+            --gold: #ff8f00;
+            --text-heading: #132b22;
+            --text-muted: #6b7f70;
+            --text-mid: #3b5849;
+            --shadow-md: 0 4px 20px rgba(22, 54, 36, 0.08);
+            --shadow-lg: 0 10px 30px rgba(22, 54, 36, 0.12);
+            --shadow-xl: 0 20px 40px rgba(22, 54, 36, 0.16);
+            --shadow-xs: 0 2px 8px rgba(22, 54, 36, 0.04);
+            --bark: #153a25;
+            --bark-lite: #246b3c;
+            --mahogany: #1b5e20;
+        }
+
+        /* ── WORKSHOPS PAGE SPECIFIC STYLES ── */
+
+        /* Flyer preview card */
+        .ws-flyer-card {
+            margin-top: 0;
+            max-width: 550px;
+            width: 100%;
+            margin: 0 auto;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--cream);
+            border: 2.5px solid rgba(214, 164, 54, 0.35);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--t) var(--ease);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .ws-flyer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--saffron);
+        }
+
+        .ws-flyer-thumb {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1.414;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s var(--ease);
+        }
+
+        .ws-flyer-card:hover .ws-flyer-thumb {
+            transform: scale(1.04);
+        }
+
+        .ws-flyer-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(21, 43, 34, 0.82);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--t) var(--ease);
+            color: var(--offwhite);
+            gap: 0.5rem;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .ws-flyer-card:hover .ws-flyer-overlay {
+            opacity: 1;
+        }
+
+        .ws-flyer-icon {
+            font-size: 2.2rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .ws-flyer-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .ws-flyer-caption {
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.2rem;
+        }
+
+        /* Speaker card award badge */
+        .ws-speaker-award {
+            margin-top: 1.25rem;
+            background: linear-gradient(135deg, rgba(214, 164, 54, 0.12) 0%, rgba(242, 158, 76, 0.08) 100%);
+            border: 1.5px dashed rgba(214, 164, 54, 0.45);
+            border-radius: var(--radius-sm);
+            padding: 0.9rem;
+            text-align: left;
+            position: relative;
+            box-shadow: var(--shadow-xs);
+            transition: all var(--t) var(--ease);
+        }
+
+        .ws-speaker-award:hover {
+            border-color: var(--saffron);
+            background: linear-gradient(135deg, rgba(214, 164, 54, 0.16) 0%, rgba(242, 158, 76, 0.12) 100%);
+        }
+
+        .ws-speaker-award-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--saffron);
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .ws-speaker-award-text {
+            font-size: 0.76rem;
+            color: var(--text-mid);
+            line-height: 1.45;
+            font-weight: 500;
+        }
+
+        /* Initials profile placeholder */
+        .ws-speaker-avatar-initials {
+            width: 82px;
+            height: 82px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--bark-lite) 0%, var(--mahogany) 100%);
+            border: 3px solid rgba(214, 164, 54, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--offwhite);
+            margin: 0 auto 0.85rem;
+            transition: all var(--t) var(--ease);
+            box-shadow: var(--shadow-xs);
+        }
+
+        .ws-speaker-card:hover .ws-speaker-avatar-initials {
+            border-color: var(--saffron);
+            transform: scale(1.05) rotate(3deg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Page hero — compact inner-page version */
+        .page-hero {
+            position: relative;
+            min-height: 48vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: calc(var(--nav-h) + 5rem) 2rem 5rem;
+            overflow: hidden;
+            background: linear-gradient(135deg,
+                    rgba(21, 58, 37, 0.9) 0%,
+                    rgba(19, 43, 31, 0.88) 100%),
+                url('../media/web/analogicus-nature-3348406.jpg') no-repeat center center / cover;
+        }
+
+        .page-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 30%, rgba(21, 58, 37, 0.4) 100%);
+            pointer-events: none;
+        }
+
+        .page-hero-rings {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .page-hero-rings .ring {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+        }
+
+        .page-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--saffron);
+            background: rgba(244, 166, 35, 0.2);
+            border: 1px solid rgba(244, 166, 35, 0.35);
+            padding: 0.45rem 1.25rem;
+            border-radius: var(--r-pill);
+            margin-bottom: 1.2rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .page-hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            font-weight: 700;
+            color: var(--offwhite);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+        }
+
+        .page-hero-title span {
+            color: var(--saffron);
+        }
+
+        .page-hero-desc {
+            font-size: 1.05rem;
+            color: rgba(248, 238, 224, 0.85);
+            max-width: 560px;
+            margin: 0 auto 2.2rem;
+            line-height: 1.75;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: rgba(232, 201, 154, 0.5);
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .breadcrumb a {
+            color: rgba(232, 201, 154, 0.65);
+            transition: color var(--t) var(--ease);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--sand);
+        }
+
+        .breadcrumb .sep {
+            opacity: 0.4;
+        }
+
+        /* Workshop nav tabs */
+        .ws-tabs {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 1.25rem 2rem;
+            background: rgba(255, 255, 255, 0.75);
+            border-bottom: 1px solid rgba(21, 58, 37, 0.08);
+            position: sticky;
+            top: var(--nav-h);
+            z-index: 100;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+            transition: all var(--t) var(--ease);
+        }
+
+        .ws-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 1.4rem;
+            border-radius: var(--r-pill);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-mid);
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(36, 107, 60, 0.15);
+            cursor: pointer;
+            transition: all var(--t) var(--ease);
+            text-decoration: none;
+            box-shadow: var(--shadow-xs);
+        }
+
+        .ws-tab:hover {
+            background: var(--white);
+            border-color: var(--forest-green);
+            color: var(--forest);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ws-tab.active {
+            background: linear-gradient(135deg, var(--forest), var(--forest-green));
+            border-color: transparent;
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(21, 58, 37, 0.25);
+        }
+
+        .ws-tab .tab-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.2);
+            color: inherit;
+        }
+
+        .ws-tab.active .tab-num {
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+        }
+
+        /* Main workshops container */
+        .workshops-wrap {
+            padding: 5rem 0 6rem;
+        }
+
+        /* Individual workshop block styled as a premium card */
+        .workshop-block {
+            background: var(--cream);
+            border: 1px solid rgba(36, 107, 60, 0.12);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--t) var(--ease);
+            position: relative;
+            scroll-margin-top: calc(var(--nav-h) + 120px);
+        }
+
+        .workshop-block:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(36, 107, 60, 0.25);
+        }
+
+        /* Timeline node decoration */
+        .workshop-block::before {
+            content: "";
+            position: absolute;
+            left: -2.85rem;
+            /* center on the 4px vertical timeline line */
+            top: 3.1rem;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--cream);
+            border: 4px solid var(--teal-vivid);
+            z-index: 5;
+            transition: all var(--t) var(--ease);
+            box-shadow: 0 0 0 4px rgba(0, 121, 107, 0.15);
+        }
+
+        .workshop-block:nth-of-type(2)::before {
+            border-color: var(--amber-glow);
+            box-shadow: 0 0 0 4px rgba(242, 158, 76, 0.15);
+        }
+
+        .workshop-block:hover::before {
+            transform: scale(1.3);
+            background: var(--teal-vivid);
+            box-shadow: 0 0 12px rgba(0, 121, 107, 0.5);
+        }
+
+        .workshop-block:nth-of-type(2):hover::before {
+            background: var(--amber-glow);
+            box-shadow: 0 0 12px rgba(242, 158, 76, 0.5);
+        }
+
+        /* Horizontal connection line to vertical timeline */
+        .workshop-block::after {
+            content: "";
+            position: absolute;
+            left: -4.5rem;
+            top: 3.5rem;
+            width: 4.5rem;
+            height: 2px;
+            background: rgba(36, 107, 60, 0.2);
+            z-index: 1;
+        }
+
+        .workshop-block:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        /* Workshop header row */
+        .ws-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .ws-number {
+            flex-shrink: 0;
+            width: 64px;
+            height: 64px;
+            border-radius: var(--r);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ws-number-1 {
+            background: linear-gradient(135deg, var(--teal-vivid), var(--ocean));
+        }
+
+        .ws-number-2 {
+            background: linear-gradient(135deg, var(--violet), var(--plum));
+        }
+
+        .ws-number-3 {
+            background: linear-gradient(135deg, var(--moss), var(--fern));
+        }
+
+        .ws-number-4 {
+            background: linear-gradient(135deg, var(--amber-glow), var(--gold));
+        }
+
+        .ws-number-5 {
+            background: linear-gradient(135deg, var(--terracotta), var(--rust));
+        }
+
+        .ws-header-text {
+            flex: 1;
+        }
+
+        .ws-series-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 0.5rem;
+        }
+
+        .ws-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 3vw, 2.1rem);
+            font-weight: 700;
+            color: var(--text-heading);
+            line-height: 1.2;
+            margin-bottom: 0.9rem;
+        }
+
+        .ws-meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .ws-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.3rem 0.85rem;
+            border-radius: var(--r-pill);
+            background: var(--cream);
+            color: var(--text-mid);
+            border: 1px solid rgba(44, 26, 14, 0.1);
+        }
+
+        .ws-meta-pill .pill-icon {
+            font-size: 0.9rem;
+        }
+
+        /* Content layout: description + speakers */
+        .ws-body {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 2.5rem;
+        }
+
+        .ws-body-full {
+            grid-template-columns: 1fr;
+        }
+
+        .ws-description p {
+            color: var(--text-mid);
+            font-size: 0.97rem;
+            line-height: 1.82;
+            margin-bottom: 1rem;
+        }
+
+        .ws-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        .ws-description strong {
+            color: var(--bark);
+            font-weight: 600;
+        }
+
+        .ws-description ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 1rem 0 1.2rem;
+        }
+
+        .ws-description ul li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.93rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+        }
+
+        .ws-description ul li::before {
+            content: "▸";
+            color: var(--terracotta);
+            font-size: 0.65rem;
+            flex-shrink: 0;
+            margin-top: 0.35em;
+        }
+
+        .ws-flyer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--terracotta);
+            border: 1.5px solid rgba(192, 91, 58, 0.3);
+            background: rgba(192, 91, 58, 0.05);
+            padding: 0.5rem 1.1rem;
+            border-radius: var(--r-sm);
+            transition: all var(--t) var(--ease);
+        }
+
+        .ws-flyer-link:hover {
+            background: rgba(192, 91, 58, 0.1);
+            border-color: var(--terracotta);
+            transform: translateY(-1px);
+        }
+
+        /* Speaker cards sidebar */
+        .ws-speakers {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .ws-speaker-card {
+            background: var(--offwhite);
+            border: 1.5px solid rgba(44, 26, 14, 0.08);
+            border-radius: var(--r);
+            padding: 1.4rem 1.2rem;
+            text-align: center;
+            box-shadow: var(--shadow-xs);
+            transition: all var(--t) var(--ease);
+        }
+
+        .ws-speaker-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+            border-color: rgba(192, 91, 58, 0.2);
+        }
+
+        .ws-speaker-avatar {
+            width: 82px;
+            height: 82px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top center;
+            border: 3px solid rgba(232, 201, 154, 0.55);
+            margin: 0 auto 0.85rem;
+            display: block;
+            transition: all var(--t) var(--ease);
+        }
+
+        .ws-speaker-card:hover .ws-speaker-avatar {
+            border-color: var(--terracotta);
+            transform: scale(1.05);
+        }
+
+        .ws-speaker-avatar-placeholder {
+            width: 82px;
+            height: 82px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--bark-lite), var(--mahogany));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--sand);
+            margin: 0 auto 0.85rem;
+            border: 3px solid rgba(232, 201, 154, 0.25);
+        }
+
+        .ws-speaker-name {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--bark);
+            margin-bottom: 0.2rem;
+        }
+
+        .ws-speaker-title {
+            font-size: 0.76rem;
+            color: var(--terracotta);
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            line-height: 1.4;
+        }
+
+        .ws-speaker-affil {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Photo gallery */
+        .ws-gallery-wrap {
+            margin-top: 2rem;
+        }
+
+        .ws-gallery-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .ws-gallery-label span {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .ws-gallery-label::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(44, 26, 14, 0.1);
+        }
+
+        .ws-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .ws-gallery-img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: var(--r-sm);
+            display: block;
+            transition:
+                transform 0.4s var(--ease),
+                box-shadow 0.4s var(--ease),
+                filter 0.4s var(--ease);
+            cursor: zoom-in;
+            filter: brightness(0.96) saturate(0.92);
+        }
+
+        .ws-gallery-img:hover {
+            transform: scale(1.04);
+            box-shadow: var(--shadow-md);
+            filter: brightness(1.04) saturate(1.05);
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(28, 14, 6, 0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            cursor: zoom-out;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: var(--r);
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.75rem;
+            color: rgba(232, 201, 154, 0.7);
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+            background: none;
+            border: none;
+            transition: color var(--t) var(--ease);
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            color: var(--sand);
+        }
+
+        .lightbox-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(232, 201, 154, 0.7);
+            font-size: 2rem;
+            cursor: pointer;
+            background: rgba(44, 26, 14, 0.6);
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--t) var(--ease);
+            z-index: 10000;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(192, 91, 58, 0.8);
+            color: #fff;
+        }
+
+        .lightbox-prev {
+            left: 1rem;
+        }
+
+        .lightbox-next {
+            right: 1rem;
+        }
+
+        .lightbox-counter {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(232, 201, 154, 0.5);
+            font-size: 0.82rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* Status badge — completed / upcoming */
+        .ws-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.28rem 0.75rem;
+            border-radius: var(--r-pill);
+        }
+
+        .ws-status-done {
+            background: rgba(61, 107, 69, 0.12);
+            color: var(--moss);
+            border: 1px solid rgba(61, 107, 69, 0.25);
+        }
+
+        .ws-status-upcoming {
+            background: rgba(232, 150, 12, 0.12);
+            color: var(--amber-glow);
+            border: 1px solid rgba(232, 150, 12, 0.28);
+        }
+
+        .ws-status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .ws-status-done .ws-status-dot {
+            animation: none;
+        }
+
+        .ws-status-upcoming .ws-status-dot {
+            animation: blink 1.4s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        /* Timeline sidebar (left accent) */
+        .workshops-inner {
+            position: relative;
+            padding-left: 4.5rem;
+        }
+
+        .workshops-inner::before {
+            content: "";
+            position: absolute;
+            left: 2rem;
+            /* center the line */
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg,
+                    var(--teal-vivid) 0%,
+                    var(--amber-glow) 40%,
+                    var(--moss) 70%,
+                    rgba(44, 26, 14, 0.1) 100%);
+            border-radius: var(--r-pill);
+        }
+
+
+        /* Upcoming notice card */
+        .upcoming-notice {
+            background: linear-gradient(135deg,
+                    rgba(232, 150, 12, 0.08),
+                    rgba(232, 201, 154, 0.06));
+            border: 1.5px solid rgba(232, 150, 12, 0.25);
+            border-radius: var(--r);
+            padding: 1.4rem 1.6rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .upcoming-notice-icon {
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+
+        .upcoming-notice h4 {
+            font-size: 0.95rem;
+            color: var(--amber-glow);
+            margin-bottom: 0.35rem;
+        }
+
+        .upcoming-notice p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .ws-body {
+                grid-template-columns: 1fr;
+            }
+
+            .ws-speakers {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .ws-speaker-card {
+                width: 100%;
+                max-width: 320px;
+            }
+
+
+        }
+
+        @media (max-width: 768px) {
+            .workshop-block {
+                padding: 1.5rem;
+            }
+
+            .workshops-inner {
+                padding-left: 0;
+            }
+
+            .workshops-inner::before {
+                display: none;
+            }
+
+            .workshop-block::before,
+            .workshop-block::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .ws-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .ws-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+
+            .ws-tabs {
+                padding: 1.5rem 1rem;
+                gap: 0.4rem;
+            }
+
+            .ws-tab {
+                font-size: 0.78rem;
+                padding: 0.45rem 0.9rem;
+            }
+
+            .workshops-inner {
+                padding-left: 0;
+            }
+
+            .workshops-inner::before {
+                display: none;
+            }
+
+        }
+
+        /* ── AMBER VARIANT FOR SPEAKER CARDS ── */
+        .ws-speaker-avatar-initials.avatar-amber {
+            background: linear-gradient(135deg, var(--rust) 0%, var(--terracotta) 100%);
+            border-color: rgba(242, 158, 76, 0.35);
+        }
+
+        .ws-speaker-card:hover .ws-speaker-avatar-initials.avatar-amber {
+            border-color: var(--amber-glow);
+        }
+
+        .ws-speaker-award.award-amber {
+            border-color: rgba(242, 158, 76, 0.45);
+            background: linear-gradient(135deg, rgba(242, 158, 76, 0.12) 0%, rgba(214, 164, 54, 0.08) 100%);
+        }
+
+        .ws-speaker-award.award-amber:hover {
+            border-color: var(--amber-glow);
+            background: linear-gradient(135deg, rgba(242, 158, 76, 0.16) 0%, rgba(214, 164, 54, 0.12) 100%);
+        }
+
+        .ws-speaker-award.award-amber .ws-speaker-award-title {
+            color: var(--amber-glow);
+        }
+
+        /* ── NEW WORKSHOP 01 RESTRUCTURED GRID ── */
+        .ws-body-grid {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 3.5rem;
+            align-items: start;
+            margin-bottom: 2.5rem;
+        }
+
+        .ws-flyer-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .ws-content-col {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .ws-section-subtitle {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.1rem;
+        }
+
+        .ws-meta-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .ws-meta-vertical .ws-meta-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.2rem;
+            font-size: 0.88rem;
+            border-radius: var(--r);
+            background: var(--cream);
+            border: 1.5px solid rgba(44, 26, 14, 0.08);
+            box-shadow: var(--shadow-xs);
+            transition: all var(--t) var(--ease);
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .ws-meta-vertical .ws-meta-pill:hover {
+            border-color: var(--teal-vivid);
+            transform: translateX(4px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        @media (max-width: 900px) {
+            .ws-body-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .ws-flyer-col {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <!-- ── NAVBAR ── -->
-  <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a href="#home" class="nav-logo">
-        <img src="./../media/web/4.png" alt="RESCON logo" class="logo-img" />
-      </a>
+    <!-- ── NAVBAR ── -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="#home" class="nav-logo">
+                <img src="./../media/web/4.png" alt="RESCON logo" class="logo-img" />
+            </a>
 
-      <ul class="nav-links">
-        <li><a href="./../index.html">Home</a></li>
-        <li><a href="./../index.html#about">About</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" id="callForPapersBtn">Call for Abstracts <span
-              style="font-size: 0.8em; margin-left: 2px;">▼</span></a>
-          <ul class="dropdown-menu" id="callForPapersMenu">
-            <li><a href="#dates">Important Dates</a></li>
-            <li><a href="guidelines/index.html">Guidelines</a></li>
-            <li><a href="docs/flyer.pdf" target="_blank" class="btn">📄 Download Flyer</a></li>
-            <!-- <li><a href="docs/brochure.pdf" target="_blank" class="btn">📋 Download Brochure</a></li> -->
+            <ul class="nav-links">
+                <li><a href="./../index.html">Home</a></li>
+                <li><a href="./../index.html#about">About</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" id="callForPapersBtn">Call for Abstracts <span
+                            style="font-size: 0.8em; margin-left: 2px;">▼</span></a>
+                    <ul class="dropdown-menu" id="callForPapersMenu">
+                        <li><a href="../index.html#dates">Important Dates</a></li>
+                        <li><a href="../guidelines/index.html">Guidelines</a></li>
+                        <li><a href="../docs/flyer.pdf" target="_blank" class="btn">📄 Download Flyer</a></li>
+                        <!-- <li><a href="../docs/brochure.pdf" target="_blank" class="btn">📋 Download Brochure</a></li> -->
 
-            <li><a href="https://cmt3.research.microsoft.com/RESCON2026">Submit</a></li>
-          </ul>
-        </li>
-        <li><a href="./../index.html#themes">Themes</a></li>
-        <li><a href="./../index.html#committee">Committees</a></li>
-        <li><a href=".././workshops/index.html">Workshops</a></li>
-        <li><a href="../speakers/index.html">Speakers</a></li>
-        <!-- <li><a href=".././gallery/index.html">Past Conferences</a></li> -->
-        <li><a href="./../index.html#contact">Contact</a></li>
-      </ul>
+                        <li><a href="https://cmt3.research.microsoft.com/RESCON2026">Submit</a></li>
+                    </ul>
+                </li>
+                <li><a href="./../index.html#themes">Themes</a></li>
+                <li><a href="./../index.html#committee">Committees</a></li>
+                <li><a href=".././workshops/index.html">Workshops</a></li>
+                <li><a href="../speakers/index.html">Speakers</a></li>
+                <!-- <li><a href=".././gallery/index.html">Past Conferences</a></li> -->
+                <li><a href="./../index.html#contact">Contact</a></li>
+            </ul>
 
 
-      <a href="https://www.pgis.lk/"><img src="../images/web/PGIS Anniversary Logo.png" alt="PGIS Anniversary Logo"
-          class="pgis-logo" /></a>
+            <a href="https://www.pgis.lk/"><img src="../images/web/PGIS Anniversary Logo.png"
+                    alt="PGIS Anniversary Logo" class="pgis-logo" /></a>
 
-      <label for="nav-toggle" class="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </label>
-    </div>
-  </nav>
-  <label for="nav-toggle" class="nav-overlay"></label>
+            <label for="nav-toggle" class="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </label>
+        </div>
+    </nav>
+    <label for="nav-toggle" class="nav-overlay"></label>
 
-  <!-- ── PAGE HERO ── -->
-  <section class="page-hero">
-    <div class="page-hero-rings">
-      <div class="ring r1"></div>
-      <div class="ring r2"></div>
-      <div class="ring r3"></div>
-    </div>
+    <!-- ── PAGE HERO ── -->
+    <section class="page-hero">
+        <div class="page-hero-rings">
+            <div class="ring r1"></div>
+            <div class="ring r2"></div>
+            <div class="ring r3"></div>
+        </div>
 
-    <div class="page-hero-content">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <span class="sep">/</span>
-        <span>Workshops</span>
-      </div>
-      <div class="page-hero-badge">🔬 Pre-Conference Series</div>
-      <h1 class="page-hero-title">
-        Pre-Conference<br /><span>Workshops</span>
-      </h1>
-      <p class="page-hero-desc">
-        A curated series of expert-led workshops, talks, and seminars hosted
-        in the lead-up to RESCON 2026 — bridging cutting-edge science with
-        accessible knowledge.
-      </p>
-      <div style="
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sep">/</span>
+                <span>Workshops</span>
+            </div>
+            <div class="page-hero-badge">🔬 Pre-Conference Series</div>
+            <h1 class="page-hero-title">
+                Pre-Conference<br /><span>Workshops</span>
+            </h1>
+            <p class="page-hero-desc">
+                A curated series of expert-led workshops, talks, and seminars hosted
+                in the lead-up to RESCON 2026 — bridging cutting-edge science with
+                accessible knowledge.
+            </p>
+            <div style="
             display: flex;
             gap: 0.75rem;
             justify-content: center;
             flex-wrap: wrap;
           ">
-        <a href="#ws-02" class="btn btn-primary btn-sm">Explore Workshops ↓</a>
-        <a href="./../index.html#themes" class="btn btn-outline-light btn-sm">View Themes</a>
-      </div>
+                <a href="#ws-01" class="btn btn-primary btn-sm">Explore Workshops ↓</a>
+                <!-- <a href="./../index.html#themes" class="btn btn-outline-light btn-sm">View Themes</a> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ── WORKSHOPS MAIN CONTENT ── -->
+    <div class="workshops-wrap section-alt" style="padding-top: 0;">
+
+        <!-- Sticky Navigation Tabs -->
+        <!-- <div class="ws-tabs">
+            <a href="#ws-01" class="ws-tab active">
+                <span class="tab-num">1</span> Samba Ecology Talk
+            </a>
+        </div> -->
+
+        <div class="container" style="padding-top: 4rem;">
+
+            <!-- Timeline line wrapper -->
+            <div class="workshops-inner">
+
+                <!-- ══════════════════════════════
+               WORKSHOP 01
+          ══════════════════════════════ -->
+                <article class="workshop-block" id="ws-01">
+                    <div class="ws-header">
+                        <div class="ws-number ws-number-1">01</div>
+                        <div class="ws-header-text">
+                            <div style="
+                        display: flex;
+                        align-items: center;
+                        gap: 0.75rem;
+                        flex-wrap: wrap;
+                        margin-bottom: 0.5rem;
+                      ">
+                                <span class="ws-series-label">Pre-Conference Talk 01</span>
+                                <span class="ws-status ws-status-upcoming"><span
+                                        class="ws-status-dot"></span>Upcoming</span>
+                            </div>
+                            <h2 class="ws-title">
+                                Ecology of Samba (Rusa unicolor unicolor) in Horton Plains National Park, Sri Lanka
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="ws-body-grid">
+                        <!-- Left Column: Flyer Showcase -->
+                        <div class="ws-flyer-col">
+                            <div class="ws-flyer-card lightbox-trigger" style="margin-bottom: 5%;"
+                                title="Click to view full flyer">
+                                <img src="../docs/RESCON Pre conference.png" alt="RESCON26 Pre-Conference Talk Flyer"
+                                    class="ws-flyer-thumb" />
+                                <div class="ws-flyer-overlay">
+                                    <div class="ws-flyer-icon">🔍</div>
+                                    <div class="ws-flyer-text">View Full Flyer</div>
+                                    <div class="ws-flyer-caption">Click to view fullscreen</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Speaker Profile & Details -->
+                        <div class="ws-content-col">
+                            <div>
+                                <h3 class="ws-section-subtitle">
+                                    <span>📅</span> Talk Schedule & Venue
+                                </h3>
+                                <div class="ws-meta-vertical">
+                                    <span class="ws-meta-pill"><span class="pill-icon">📅</span> 12th June 2026
+                                        (Friday)</span>
+                                    <span class="ws-meta-pill"><span class="pill-icon">⏰</span> 3:00 PM - 4:00 PM</span>
+                                    <span class="ws-meta-pill"><span class="pill-icon">🏛️</span> PGIS, University of
+                                        Peradeniya</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="ws-section-subtitle">
+                                    <span>👤</span> Featured Speaker
+                                </h3>
+                                <div class="ws-speaker-card">
+                                    <div class="ws-speaker-avatar-initials">DW</div>
+                                    <h3 class="ws-speaker-name">Dr. Danushka Weerasekara</h3>
+                                    <div class="ws-speaker-title">Postdoctoral Scientist</div>
+                                    <div class="ws-speaker-affil">
+                                        Postgraduate Institute of Science (PGIS)<br>
+                                        University of Peradeniya
+                                    </div>
+                                    <div class="ws-speaker-award">
+                                        <div class="ws-speaker-award-title">
+                                            <span>🏆</span> Award Recipient
+                                        </div>
+                                        <div class="ws-speaker-award-text">
+                                            Recipient of the Prof. Felix Prashantha Amerasinghe Memorial Postgraduate
+                                            Research Award (2023/2024)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <!-- /.workshops-inner -->
+        </div>
+        <!-- /.container -->
     </div>
-  </section>
+    <!-- /.workshops-wrap -->
 
-  <!-- ── WORKSHOPS MAIN CONTENT ── -->
-  <div class="workshops-wrap section-alt">
-    <!-- <div class="container">
-      Stats Strip -->
-    <!-- <div class="ws-stats-strip">
-        <div class="ws-stat-item">
-          <span class="ws-stat-num">02</span>
-          <span class="ws-stat-label">Workshops Held</span>
-          <div class="ws-stat-sep"></div>
-        </div>
-        <div class="ws-stat-item">
-          <span class="ws-stat-num">10+</span>
-          <span class="ws-stat-label">Expert Speakers</span>
-          <div class="ws-stat-sep"></div>
-        </div>
-        <div class="ws-stat-item">
-          <span class="ws-stat-num">300+</span>
-          <span class="ws-stat-label">Participants</span>
-          <div class="ws-stat-sep"></div>
-        </div>
-        <div class="ws-stat-item">
-          <span class="ws-stat-num">4</span>
-          <span class="ws-stat-label">Countries Represented</span>
-          <div class="ws-stat-sep"></div>
-        </div>
-      </div> -->
-
-    <!-- Timeline line wrapper -->
-    <div class="workshops-inner">
-      <!-- ══════════════════════════════
-           WORKSHOP 02
-      ══════════════════════════════ -->
-      <article class="workshop-block" id="ws-02">
-        <div class="ws-header">
-          <div class="ws-number ws-number-2">02</div>
-          <div class="ws-header-text">
-            <div style="
-                    display: flex;
-                    align-items: center;
-                    gap: 0.75rem;
-                    flex-wrap: wrap;
-                    margin-bottom: 0.5rem;
-                  ">
-              <span class="ws-series-label">Pre-Conference Workshop 02</span>
-              <span class="ws-status ws-status-done"><span class="ws-status-dot"></span>Completed</span>
-            </div>
-            <h2 class="ws-title">
-              International Seminar on Water safety and Security - A global
-              perspective
-            </h2>
-            <div class="ws-meta-row">
-              <span class="ws-meta-pill"><span class="pill-icon">📅</span> 26th March 2026
-                (Thursday)</span>
-              <span class="ws-meta-pill"><span class="pill-icon">⏰</span> 9:30 AM</span>
-              <span class="ws-meta-pill"><span class="pill-icon">🏛️</span> JRDC Auditorium</span>
-              <span class="ws-meta-pill"><span class="pill-icon">💧</span> Water Safety · Security ·
-                Global Perspective</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="ws-body">
-          <div class="ws-description">
-            <p>
-              This international seminar will explore water safety and
-              security from a global perspective, addressing critical
-              challenges and innovative solutions in water management.
-            </p>
-            <p>Key topics to be covered:</p>
-            <ul>
-              <li>Global water security challenges and threats</li>
-              <li>Innovative technologies for water safety</li>
-              <li>Policy frameworks and international cooperation</li>
-              <li>Case studies from around the world</li>
-            </ul>
-            <p>
-              Join us for this insightful seminar led by a renowned expert
-              in the field.
-            </p>
-            <a href="#" class="ws-flyer-link">📄 View Workshop Flyer</a>
-          </div>
-
-          <!-- <div class="ws-speakers">
-                <div class="ws-speaker-card">
-                  <img
-                    class="ws-speaker-avatar"
-                    src="https://www.pgis.lk/rescon2026/images/Workshops/02/Kalanithi-Vairavamoorthy.jpg"
-                    alt="Prof. Kalanithi Vairavamoorthy"
-                    onerror="
-                      this.style.display = 'none';
-                      this.nextElementSibling.style.display = 'flex';
-                    "
-                  />
-                  <div
-                    class="ws-speaker-avatar-placeholder"
-                    style="display: none"
-                  >
-                    KV
-                  </div>
-                  <div class="ws-speaker-name">
-                    Prof. Kalanithi Vairavamoorthy
-                  </div>
-                  <div class="ws-speaker-title">Keynote Speaker</div>
-                  <div class="ws-speaker-affil">
-                    CEO<br />International Water Association
-                  </div>
+    <!-- ── FOOTER ── -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="./../media/web/4.png" alt="RESCON logo" class="logo-img" />
+                    </div>
+                    <p>
+                        The Annual Research Congress of the Postgraduate Institute of
+                        Science, University of Peradeniya — bringing together researchers,
+                        scientists, and innovators in Earth &amp; Environmental Sciences.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-btn" title="Facebook">f</a>
+                        <a href="#" class="social-btn" title="Twitter">𝕏</a>
+                        <a href="#" class="social-btn" title="LinkedIn">in</a>
+                        <a href="#" class="social-btn" title="YouTube">▶</a>
+                    </div>
                 </div>
-              </div> -->
-        </div>
-      </article>
 
-      <!-- ══════════════════════════════
-           WORKSHOP 01
-      ══════════════════════════════ -->
-      <article class="workshop-block" id="ws-01">
-        <div class="ws-header">
-          <div class="ws-number ws-number-1">01</div>
-          <div class="ws-header-text">
-            <div style="
-                    display: flex;
-                    align-items: center;
-                    gap: 0.75rem;
-                    flex-wrap: wrap;
-                    margin-bottom: 0.5rem;
-                  ">
-              <span class="ws-series-label">Pre-Conference Workshop 01</span>
-              <span class="ws-status ws-status-done"><span class="ws-status-dot"></span>Completed</span>
-            </div>
-            <h2 class="ws-title">
-              International Workshop on Aquatic Biodiversity Studies by eDNA
-              Metabarcoding
-            </h2>
-            <div class="ws-meta-row">
-              <span class="ws-meta-pill"><span class="pill-icon">📅</span> 12th March 2026
-                (Wednesday)</span>
-              <span class="ws-meta-pill"><span class="pill-icon">⏰</span> 8:30 AM onwards</span>
-              <span class="ws-meta-pill"><span class="pill-icon">🏛️</span> PGIS New Conference
-                Room</span>
-              <span class="ws-meta-pill"><span class="pill-icon">🐟</span> Aquatic Biodiversity ·
-                eDNA · Metabarcoding</span>
-            </div>
-          </div>
-        </div>
+                <div class="footer-col">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="../index.html#about">About RESCON</a></li>
+                        <li><a href="../guidelines/index.html">Submission Guidelines</a></li>
+                        <li><a href="./index.html">Pre-Conference Workshops</a></li>
+                        <li><a href="../speakers/index.html">Keynote Speakers</a></li>
+                        <li><a href="../index.html#themes">Research Themes</a></li>
+                    </ul>
+                </div>
 
-        <div class="ws-body ws-body-full">
-          <div class="ws-description">
-            <p>
-              This international workshop will focus on the application of
-              eDNA metabarcoding techniques in studying aquatic
-              biodiversity, providing hands-on training and insights into
-              modern biodiversity assessment methods.
-            </p>
-            <p>Workshop highlights:</p>
-            <ul>
-              <li>Introduction to eDNA metabarcoding technology</li>
-              <li>Sampling and laboratory protocols</li>
-              <li>Data analysis and interpretation</li>
-              <li>Case studies in aquatic biodiversity monitoring</li>
-            </ul>
-            <p>
-              Participants will gain practical skills and knowledge to apply
-              eDNA methods in their research.
-            </p>
-            <a href="#" class="ws-flyer-link">📄 View Workshop Flyer</a>
-          </div>
-        </div>
-      </article>
-    </div>
-    <!-- /.workshops-inner -->
-  </div>
-  <!-- /.container -->
-  </div>
-  <!-- /.workshops-wrap -->
+                <div class="footer-col">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="#">Abstract Template</a></li>
+                        <li><a href="#">Registration Form</a></li>
+                        <li><a href="#">Conference Schedule</a></li>
+                        <li><a href="#">Venue &amp; Travel</a></li>
+                        <li><a href="#">Past Proceedings</a></li>
+                    </ul>
+                </div>
 
-  <!-- ── FOOTER ── -->
-  <footer class="footer" id="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <img src="./../media/web/4.png" alt="RESCON logo" class="logo-img" />
-          </div>
-          <p>
-            The Annual Research Congress of the Postgraduate Institute of
-            Science, University of Peradeniya — bringing together researchers,
-            scientists, and innovators in Earth &amp; Environmental Sciences.
-          </p>
-          <div class="social-links">
-            <a href="#" class="social-btn" title="Facebook">f</a>
-            <a href="#" class="social-btn" title="Twitter">𝕏</a>
-            <a href="#" class="social-btn" title="LinkedIn">in</a>
-            <a href="#" class="social-btn" title="YouTube">▶</a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h5>Quick Links</h5>
-          <ul>
-            <li><a href="index.html#about">About RESCON</a></li>
-            <li><a href="guidelines.html">Submission Guidelines</a></li>
-            <li><a href="workshops.html">Pre-Conference Workshops</a></li>
-            <li><a href="speakers.html">Keynote Speakers</a></li>
-            <li><a href="index.html#themes">Research Themes</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Resources</h5>
-          <ul>
-            <li><a href="#">Abstract Template</a></li>
-            <li><a href="#">Registration Form</a></li>
-            <li><a href="#">Conference Schedule</a></li>
-            <li><a href="#">Venue &amp; Travel</a></li>
-            <li><a href="#">Past Proceedings</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Organised By</h5>
-          <div class="footer-org">
-            <div class="org-logo">PGIS</div>
-            <p>
-              Postgraduate Institute of Science<br />University of
-              Peradeniya<br />Peradeniya 20400
-            </p>
-          </div>
-          <div style="
+                <div class="footer-col">
+                    <h5>Organised By</h5>
+                    <div class="footer-org">
+                        <div class="org-logo">PGIS</div>
+                        <p>
+                            Postgraduate Institute of Science<br />University of
+                            Peradeniya<br />Peradeniya 20400
+                        </p>
+                    </div>
+                    <div style="
                 margin-top: 1rem;
                 font-size: 0.84rem;
                 color: rgba(248, 238, 224, 0.55);
               ">
-            <div>📞 081 239 4506</div>
-            <div style="margin-top: 0.35rem">✉️ rescon2025@pgis.lk</div>
-          </div>
+                        <div>📞 081 239 4506</div>
+                        <div style="margin-top: 0.35rem">✉️ rescon2025@pgis.lk</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    © 2026 RESCON · Postgraduate Institute of Science, University of
+                    Peradeniya. All rights reserved.
+                </p>
+                <p>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="https://www.pgis.lk" target="_blank" rel="noopener">www.pgis.lk ↗</a>
+                </p>
+            </div>
         </div>
-      </div>
+    </footer>
 
-      <div class="footer-bottom">
-        <p>
-          © 2026 RESCON · Postgraduate Institute of Science, University of
-          Peradeniya. All rights reserved.
-        </p>
-        <p>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
-          <a href="https://www.pgis.lk" target="_blank" rel="noopener">www.pgis.lk ↗</a>
-        </p>
-      </div>
+    <!-- ── LIGHTBOX ── -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <button class="lightbox-close" id="lb-close" aria-label="Close">×</button>
+        <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Previous">
+            ‹
+        </button>
+        <img class="lightbox-img" id="lb-img" src="" alt="" />
+        <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Next">
+            ›
+        </button>
+        <div class="lightbox-counter" id="lb-counter"></div>
     </div>
-  </footer>
 
-  <!-- ── LIGHTBOX ── -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-    <button class="lightbox-close" id="lb-close" aria-label="Close">×</button>
-    <button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Previous">
-      ‹
+    <!-- ── BACK TO TOP ── -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        ↑
     </button>
-    <img class="lightbox-img" id="lb-img" src="" alt="" />
-    <button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Next">
-      ›
-    </button>
-    <div class="lightbox-counter" id="lb-counter"></div>
-  </div>
 
-  <!-- ── BACK TO TOP ── -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">
-    ↑
-  </button>
+    <script>
+        /* ── Navbar shrink on scroll ── */
+        const navbar = document.getElementById("navbar");
+        const btt = document.getElementById("backToTop");
 
-  <script>
-    /* ── Navbar shrink on scroll ── */
-    const navbar = document.getElementById("navbar");
-    const btt = document.getElementById("backToTop");
+        window.addEventListener(
+            "scroll",
+            () => {
+                if (window.scrollY > 60) {
+                    navbar.classList.add("shrink");
+                    btt.classList.add("visible");
+                } else {
+                    navbar.classList.remove("shrink");
+                    btt.classList.remove("visible");
+                }
+            },
+            { passive: true },
+        );
 
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (window.scrollY > 60) {
-          navbar.classList.add("shrink");
-          btt.classList.add("visible");
-        } else {
-          navbar.classList.remove("shrink");
-          btt.classList.remove("visible");
-        }
-      },
-      { passive: true },
-    );
+        btt.addEventListener("click", () =>
+            window.scrollTo({ top: 0, behavior: "smooth" }),
+        );
 
-    btt.addEventListener("click", () =>
-      window.scrollTo({ top: 0, behavior: "smooth" }),
-    );
+        /* ── Tab active state on scroll ── */
+        const tabs = document.querySelectorAll(".ws-tab");
+        const sections = document.querySelectorAll(".workshop-block[id]");
 
-    /* ── Tab active state on scroll ── */
-    const tabs = document.querySelectorAll(".ws-tab");
-    const sections = document.querySelectorAll(".workshop-block[id]");
+        const tabObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        tabs.forEach((t) => t.classList.remove("active"));
+                        const active = document.querySelector(
+                            `.ws-tab[href="#${entry.target.id}"]`,
+                        );
+                        if (active) active.classList.add("active");
+                    }
+                });
+            },
+            { rootMargin: "-30% 0px -60% 0px", threshold: 0 },
+        );
 
-    const tabObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            tabs.forEach((t) => t.classList.remove("active"));
-            const active = document.querySelector(
-              `.ws-tab[href="#${entry.target.id}"]`,
-            );
-            if (active) active.classList.add("active");
-          }
-        });
-      },
-      { rootMargin: "-30% 0px -60% 0px", threshold: 0 },
-    );
+        sections.forEach((s) => tabObserver.observe(s));
 
-    sections.forEach((s) => tabObserver.observe(s));
+        /* ── Scroll-in animations ── */
+        const animObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("animate-in");
+                        animObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.08 },
+        );
 
-    /* ── Scroll-in animations ── */
-    const animObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-in");
-            animObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.08 },
-    );
+        document
+            .querySelectorAll(".ws-speaker-card, .ws-stat-item")
+            .forEach((el) => {
+                el.style.opacity = "0";
+                el.style.transform = "translateY(20px)";
+                el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+                animObserver.observe(el);
+            });
 
-    document
-      .querySelectorAll(".ws-speaker-card, .ws-stat-item")
-      .forEach((el) => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(20px)";
-        el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-        animObserver.observe(el);
-      });
-
-    /* Override animate-in for these elements */
-    const animStyle = document.createElement("style");
-    animStyle.textContent = `
+        /* Override animate-in for these elements */
+        const animStyle = document.createElement("style");
+        animStyle.textContent = `
     .ws-speaker-card.animate-in,
     .ws-stat-item.animate-in { opacity: 1 !important; transform: translateY(0) !important; }
   `;
-    document.head.appendChild(animStyle);
+        document.head.appendChild(animStyle);
 
-    /* ── Lightbox ── */
-    const lightbox = document.getElementById("lightbox");
-    const lbImg = document.getElementById("lb-img");
-    const lbCounter = document.getElementById("lb-counter");
-    const lbClose = document.getElementById("lb-close");
-    const lbPrev = document.getElementById("lb-prev");
-    const lbNext = document.getElementById("lb-next");
+        /* ── Lightbox ── */
+        const lightbox = document.getElementById("lightbox");
+        const lbImg = document.getElementById("lb-img");
+        const lbCounter = document.getElementById("lb-counter");
+        const lbClose = document.getElementById("lb-close");
+        const lbPrev = document.getElementById("lb-prev");
+        const lbNext = document.getElementById("lb-next");
 
-    let currentGallery = [];
-    let currentIndex = 0;
+        let currentGallery = [];
+        let currentIndex = 0;
 
-    function openLightbox(imgs, idx) {
-      currentGallery = Array.from(imgs);
-      currentIndex = idx;
-      showImage();
-      lightbox.classList.add("open");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove("open");
-      document.body.style.overflow = "";
-    }
-
-    function showImage() {
-      lbImg.src = currentGallery[currentIndex].src;
-      lbImg.alt = currentGallery[currentIndex].alt;
-      lbCounter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
-    }
-
-    document.querySelectorAll(".ws-gallery").forEach((gallery) => {
-      const imgs = gallery.querySelectorAll(".ws-gallery-img");
-      imgs.forEach((img, idx) => {
-        img.addEventListener("click", () => openLightbox(imgs, idx));
-      });
-    });
-
-    lbClose.addEventListener("click", closeLightbox);
-
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    lbPrev.addEventListener("click", (e) => {
-      e.stopPropagation();
-      currentIndex =
-        (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-      showImage();
-    });
-
-    lbNext.addEventListener("click", (e) => {
-      e.stopPropagation();
-      currentIndex = (currentIndex + 1) % currentGallery.length;
-      showImage();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (!lightbox.classList.contains("open")) return;
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowLeft") {
-        currentIndex =
-          (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-        showImage();
-      }
-      if (e.key === "ArrowRight") {
-        currentIndex = (currentIndex + 1) % currentGallery.length;
-        showImage();
-      }
-    });
-    /* Dropdown Toggle Logic */
-    const callForPapersBtn = document.getElementById("callForPapersBtn");
-    const callForPapersMenu = document.getElementById("callForPapersMenu");
-
-    if (callForPapersBtn && callForPapersMenu) {
-      callForPapersBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        callForPapersMenu.classList.toggle("show");
-      });
-
-      document.addEventListener("click", (e) => {
-        if (!e.target.closest('.dropdown')) {
-          callForPapersMenu.classList.remove("show");
+        function openLightbox(imgs, idx) {
+            currentGallery = Array.from(imgs);
+            currentIndex = idx;
+            showImage();
+            lightbox.classList.add("open");
+            document.body.style.overflow = "hidden";
         }
-      });
 
-      // Close dropdown when a submenu link is clicked
-      const subLinks = callForPapersMenu.querySelectorAll('a');
-      subLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          callForPapersMenu.classList.remove("show");
+        function closeLightbox() {
+            lightbox.classList.remove("open");
+            document.body.style.overflow = "";
+        }
+
+        function showImage() {
+            lbImg.src = currentGallery[currentIndex].src;
+            lbImg.alt = currentGallery[currentIndex].alt;
+            lbCounter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
+        }
+
+        document.querySelectorAll(".ws-gallery").forEach((gallery) => {
+            const imgs = gallery.querySelectorAll(".ws-gallery-img");
+            imgs.forEach((img, idx) => {
+                img.addEventListener("click", () => openLightbox(imgs, idx));
+            });
         });
-      });
-    }
-    /* ── Smooth tab scroll ── */
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", (e) => {
-        e.preventDefault();
-        const target = document.querySelector(tab.getAttribute("href"));
-        if (target) {
-          const offset =
-            parseFloat(
-              getComputedStyle(document.documentElement).getPropertyValue(
-                "--nav-h",
-              ),
-            ) + 90;
-          const top =
-            target.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({ top, behavior: "smooth" });
+
+        // Lightbox trigger for flyers
+        document.querySelectorAll(".ws-flyer-card.lightbox-trigger").forEach((card) => {
+            const img = card.querySelector(".ws-flyer-thumb");
+            if (img) {
+                card.addEventListener("click", () => {
+                    openLightbox([img], 0);
+                });
+            }
+        });
+
+        lbClose.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        lbPrev.addEventListener("click", (e) => {
+            e.stopPropagation();
+            currentIndex =
+                (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+            showImage();
+        });
+
+        lbNext.addEventListener("click", (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % currentGallery.length;
+            showImage();
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (!lightbox.classList.contains("open")) return;
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowLeft") {
+                currentIndex =
+                    (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+                showImage();
+            }
+            if (e.key === "ArrowRight") {
+                currentIndex = (currentIndex + 1) % currentGallery.length;
+                showImage();
+            }
+        });
+        /* Dropdown Toggle Logic */
+        const callForPapersBtn = document.getElementById("callForPapersBtn");
+        const callForPapersMenu = document.getElementById("callForPapersMenu");
+
+        if (callForPapersBtn && callForPapersMenu) {
+            callForPapersBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                callForPapersMenu.classList.toggle("show");
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!e.target.closest('.dropdown')) {
+                    callForPapersMenu.classList.remove("show");
+                }
+            });
+
+            // Close dropdown when a submenu link is clicked
+            const subLinks = callForPapersMenu.querySelectorAll('a');
+            subLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    callForPapersMenu.classList.remove("show");
+                });
+            });
         }
-      });
-    });
-  </script>
+        /* ── Smooth tab scroll ── */
+        tabs.forEach((tab) => {
+            tab.addEventListener("click", (e) => {
+                e.preventDefault();
+                const target = document.querySelector(tab.getAttribute("href"));
+                if (target) {
+                    const offset =
+                        parseFloat(
+                            getComputedStyle(document.documentElement).getPropertyValue(
+                                "--nav-h",
+                            ),
+                        ) + 90;
+                    const top =
+                        target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: "smooth" });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
