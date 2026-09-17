@@ -607,7 +607,6 @@
       font-weight: 700;
       line-height: 1.5;
       color: #1f2937;
-      text-transform: capitalize;
     }
 
     /* Subtle quotation-style decoration */
@@ -1002,7 +1001,8 @@
             His research focuses on how the Earth works, from the core to the crust, with particular expertise in
             paleomagnetism, cyclostratigraphy, and Earth history. His work seeks to understand the dynamics of past
             supercontinents and develop systems-based approaches to understanding and predicting future supercontinents.
-            He served as Secretary of UNESCO IGCP 648 and has been a member of the FORES Leadership Group since 2021.<br>
+            He served as Secretary of UNESCO IGCP 648 and has been a member of the FORES Leadership Group since
+            2021.<br>
             His distinctions include the National Science Foundation Antarctica Service Medal, Yale University's Philip
             M. Orville Prize and Estwing Hammer Prize, the Young Scientist Award at the 6th International Dyke
             Conference, and recognition through the CAS PIFI Special Expert and Young Talents Plan.
@@ -1013,7 +1013,7 @@
           <div class="plenary-talk">
             <div class="plenary-talk-label">Title of the Talk</div>
             <div class="plenary-talk-title">
-              Science Writing: Tricks of th trade for high impact publishing
+              Science Writing: Tricks of the trade for high impact publishing
             </div>
           </div>
         </div>
@@ -1102,12 +1102,14 @@
             Prof. Weiqiang Wang is a senior scientist at the South China Sea Institute of Oceanology (SCSIO), Chinese
             Academy of Sciences (CAS), Guangzhou, China, with extensive international research experience in physical
             oceanography and marine sciences. His research focuses on large-scale ocean circulation and ocean–atmosphere
-            interactions, contributing to a better understanding of ocean dynamics and their role in the Earth system.<br>
+            interactions, contributing to a better understanding of ocean dynamics and their role in the Earth
+            system.<br>
             Prof. Wang obtained his Bachelor’s (1995), Master’s (1998), and Ph.D. (2002) degrees in Physical
             Oceanography from Ocean University of Qingdao, China. He has held research and visiting positions at several
             leading international institutions, including Universität Hamburg, Germany (2007–2012); IFM-GEOMAR, Kiel,
             Germany (2006–2007); and the Atlantic Oceanographic and Meteorological Laboratory (AOML), NOAA, USA
-            (2005–2006). He also conducted research at Lund University, Sweden, as a visiting scientist. <br> He has been
+            (2005–2006). He also conducted research at Lund University, Sweden, as a visiting scientist. <br> He has
+            been
             associated with the South China Sea Institute of Oceanology since 1998 and has served as a senior scientist
             since 2012. His work integrates oceanographic observations and interdisciplinary approaches to advance
             understanding of ocean circulation and ocean–climate interactions. He is also the Director of the China-Sri
@@ -1312,6 +1314,22 @@
       .catch(error => {
         console.error("Navbar error:", error);
       });
+
+    const smallWords = new Set([
+      "a", "an", "the", "and", "but", "or", "nor",
+      "for", "of", "in", "on", "at", "to", "by", "with", "from"
+    ]);
+
+    document.querySelectorAll(".plenary-talk-title").forEach(el => {
+      const words = el.textContent.trim().toLowerCase().split(/\s+/);
+
+      el.textContent = words.map((word, i) => {
+        if (i === 0 || i === words.length - 1 || !smallWords.has(word)) {
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        }
+        return word;
+      }).join(" ");
+    });
   </script>
 </body>
 
