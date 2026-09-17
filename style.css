@@ -2456,10 +2456,11 @@ code {
 
 /* Registration Card */
 .reg-visual {
-  display: flex;
-  justify-content: center;
+    grid-column: 1 / -1;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
 }
-
 .reg-card {
   width: 280px;
   background: var(--white);
@@ -2890,10 +2891,14 @@ code {
 
 /* ── 15. PRICING CARDS ── */
 .pricing-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.2rem;
-  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.pricing-card {
+  flex: 0 1 calc(33.333% - 1rem);
 }
 
 .pricing-card {
@@ -2911,6 +2916,19 @@ code {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
   border-color: rgba(255, 255, 255, 0.4);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 100%);
+}
+
+@media (max-width: 900px) {
+  .pricing-card {
+    flex-basis: calc(50% - 1rem);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .pricing-card {
+    flex-basis: 100%;
+  }
 }
 
 .price-category {
