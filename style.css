@@ -3368,7 +3368,7 @@ code {
     height: 120px;
   }
 
-  }
+
 
   .nav-toggle:checked~.nav-overlay {
     display: block;
