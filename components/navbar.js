@@ -85,4 +85,12 @@ function initNavbar() {
       }
     });
   });
+
+  // Remove "new" glow from Technical Programme after first click
+  const technicalBtn = document.getElementById("technicalBtn");
+  if (technicalBtn) {
+    technicalBtn.addEventListener("click", function () {
+      technicalBtn.classList.remove("nav-new");
+    }, { once: true });
+  }
 }
