@@ -6,111 +6,134 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Technical Programme — RESCON 2026</title>
 	<link rel="stylesheet" href="../style.css" />
-	<script src="https://cdn.tailwindcss.com"></script>
-	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+	<!-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
 	<style>
 		:root {
-			--forest: #153A25;
-			--forest-mid: #246B3C;
-			--forest-lite: #4C8A61;
-			--accent: #1E7B3B;
-			--accent-teal: #00796B;
-			--accent-gold: #A88B46;
-			--text-dark: #132B22;
-			--text-mid: #3B5849;
-			--text-muted: #6B7F70;
-			--surface: #E8F3EA;
-			--sky-mid: #C8E6D4;
-			--offwhite: #F5FBF7;
+			--r-lg: 20px;
+			--r-xl: 24px;
+			--r-pill: 100px;
+			--ease: cubic-bezier(0.4, 0, 0.2, 1);
+			--t: 0.28s;
+			--cream: #ffffff;
+			--offwhite: #ffffff;
+			--parchment: #eff5f1;
+			--saffron: #d6a436;
+			--terracotta: #b22721;
+			--teal-vivid: #00796b;
+			--amber-glow: #f29e4c;
+			--text-heading: #132b22;
+			--text-muted: #6b7f70;
+			--text-mid: #3b5849;
+			--shadow-md: 0 4px 20px rgba(22, 54, 36, 0.08);
+			--shadow-lg: 0 10px 30px rgba(22, 54, 36, 0.12);
+			--shadow-xl: 0 20px 40px rgba(22, 54, 36, 0.16);
+			--shadow-xs: 0 2px 8px rgba(22, 54, 36, 0.04);
+			--bark: #153a25;
+			--bark-lite: #246b3c;
+			--mahogany: #1b5e20;
 		}
 
-		/* Tailwind color overrides */
-		.bg-amber-200 {
-			background-color: var(--accent-gold);
+		/* ── Page Hero ── */
+		.page-hero {
+			position: relative;
+			min-height: 46vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			padding: calc(var(--nav-h) + 4.5rem) 2rem 4.5rem;
+			overflow: hidden;
+			background: linear-gradient(135deg,
+					rgba(19, 58, 37, 0.96),
+					rgba(37, 86, 55, 0.96));
 		}
 
-		.text-blue-600 {
-			color: var(--forest-mid);
+		.page-hero::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: transparent;
+			pointer-events: none;
 		}
 
-		.hover\:text-blue-600:hover {
-			color: var(--forest-mid);
+		.page-hero-rings {
+			position: absolute;
+			inset: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			pointer-events: none;
 		}
 
-		.hover\:bg-blue-50:hover {
-			background-color: var(--surface);
+		.page-hero-content {
+			position: relative;
+			z-index: 2;
+			max-width: 700px;
 		}
 
-		.focus\:ring-blue-500:focus {
-			--tw-ring-color: var(--forest-mid);
+		.breadcrumb {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 0.8rem;
+			color: rgba(232, 201, 154, 0.5);
+			justify-content: center;
+			margin-bottom: 1.25rem;
 		}
 
-		.text-gray-700 {
-			color: var(--text-mid);
+		.breadcrumb a {
+			color: rgba(232, 201, 154, 0.65);
+			transition: color var(--t) var(--ease);
 		}
 
-		.text-gray-500 {
-			color: var(--text-muted);
+		.breadcrumb a:hover {
+			color: var(--sand);
 		}
 
-		.text-gray-600 {
-			color: var(--text-mid);
+		.breadcrumb .sep {
+			opacity: 0.4;
 		}
 
-		.text-gray-900 {
-			color: var(--text-dark);
+		.page-hero-badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 0.72rem;
+			font-weight: 600;
+			letter-spacing: 0.22em;
+			text-transform: uppercase;
+			color: var(--saffron);
+			background: rgba(244, 166, 35, 0.15);
+			border: 1px solid rgba(244, 166, 35, 0.3);
+			padding: 0.4rem 1.2rem;
+			border-radius: var(--r-pill);
+			margin-bottom: 1.2rem;
 		}
 
-		.bg-gray-100 {
-			background-color: var(--surface);
+		.page-hero-title {
+			font-family: var(--font-display);
+			font-size: clamp(2.6rem, 7vw, 4.5rem);
+			font-weight: 700;
+			color: var(--offwhite);
+			line-height: 1.08;
+			margin-bottom: 1rem;
+			letter-spacing: -0.025em;
 		}
 
-		.hover\:bg-gray-200:hover {
-			background-color: var(--sky-mid);
+		.page-hero-title span {
+			color: var(--saffron);
 		}
 
-		.text-amber-500,
-		.border-amber-500 {
-			color: var(--accent-gold);
-			border-color: var(--accent-gold);
+		.page-hero-desc {
+			font-size: 1rem;
+			color: rgba(248, 238, 224, 0.68);
+			max-width: 500px;
+			margin: 0 auto 2rem;
+			line-height: 1.78;
 		}
 
-		.decoration-amber-500 {
-			text-decoration-color: var(--accent-gold);
-		}
-
-		.bg-gray-50 {
-			background-color: var(--offwhite);
-		}
-
-		.hover\:bg-gray-50:hover {
-			background-color: var(--surface);
-		}
-
-		.border-slate-200 {
-			border-color: var(--sky-mid);
-		}
-
-		a {
-			transition-duration: 200ms;
-		}
-
-		a:hover {
-			color: var(--forest-mid);
-		}
-
-		.sticky.top-0 {
-			background-color: rgba(255, 255, 255, 0.6);
-			backdrop-filter: blur(12px);
-		}
-
-		button:hover {
-			color: var(--forest-mid);
-		}
-
-		.bg-white {
-			background-color: #FFFFFF;
-		}
+		/* ── iframe content ── */
 
 		.sheet-wrapper {
 			width: 100%;
@@ -141,20 +164,39 @@
 		class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#fff7ed_0%,_transparent_60%)] pointer-events-none -z-10">
 	</div>
 
+	<!-- ── PAGE HERO ── -->
+
+	<section class="page-hero">
+		<div class="page-hero-rings">
+			<div class="ring r1"></div>
+			<div class="ring r2"></div>
+			<div class="ring r3"></div>
+		</div>
+
+		<div class="page-hero-content">
+			<div class="breadcrumb">
+				<a href="/rescon2026/index.html">Home</a>
+				<span class="sep">/</span>
+				<span>Programme</span>
+			</div>
+
+			<div class="page-hero-badge">📅 RESCON 2026</div>
+
+			<h1 class="page-hero-title">
+				Conference<br /><span>Programme</span>
+			</h1>
+
+			<p class="page-hero-desc">
+				Explore the latest programme, sessions, presentations, and
+				activities of RESCON 2026.
+			</p>
+		</div>
+	</section>
+
 	<!-- ========== GOOGLE SHEET ========== -->
 
 	<section class="py-16 px-4">
 		<div class="max-w-7xl mx-auto">
-
-			<div class="text-center mb-8">
-				<h2 class="text-3xl font-bold text-gray-900">
-					Conference Programme
-				</h2>
-				<p class="mt-2 text-gray-600">
-					View the latest conference programme below.
-				</p>
-			</div>
-
 			<div class=" sheet-wrapper bg-white rounded-2xl shadow-lg overflow-hidden">
 				<iframe class="sheet-iframe"
 					src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRM27b9i5nrcnUf1hWeGRzIpfXab5FEXzHDtNc2vlQ4y279k1YaTCXgmg7w3q0MRA/pubhtml?gid=160594915&amp;single=true&amp;widget=true&amp;headers=false"
