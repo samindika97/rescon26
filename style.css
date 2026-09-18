@@ -434,6 +434,24 @@ img {
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* Nav "recently added" flag */
+.nav-links a.nav-new {
+  color: var(--white);
+  animation: navNewBlink 1.6s ease-in-out infinite;
+}
+
+
+@keyframes navNewBlink {
+  0%, 100% {
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: none;
+  }
+  50% {
+    color: var(--desert-orange);
+    text-shadow: 0 0 10px rgba(242, 158, 76, 0.7);
+  }
+}
+
 /* Dropdown Menu */
 .nav-links .dropdown {
   position: relative;
