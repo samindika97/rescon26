@@ -500,7 +500,7 @@ img {
   display: none !important;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 992px) {
   .nav-links {
     display: none;
   }
@@ -521,9 +521,6 @@ img {
     overflow-y: auto;
   }
 
-  .hamburger {
-    display: flex;
-  }
 
   .nav-links li {
     width: 100%;
@@ -589,6 +586,24 @@ img {
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 992px) {
+  .hamburger {
+    display: flex;
+  }
 }
 
 /* ── 6. HERO SECTION ── */
@@ -3378,16 +3393,6 @@ code {
     right: 0;
   }
 
-  .nav-toggle:checked~.navbar .hamburger span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-  }
-
-  .nav-toggle:checked~.navbar .hamburger span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .nav-toggle:checked~.navbar .hamburger span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
   }
 
   .nav-toggle:checked~.nav-overlay {

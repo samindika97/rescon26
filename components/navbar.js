@@ -10,6 +10,7 @@ function initNavbar() {
     hamburger.addEventListener("click", function (e) {
       e.stopPropagation();
       navLinks.classList.toggle("active");
+      hamburger.classList.toggle("active");
     });
 
     // Close mobile menu when clicking actual navigation links
@@ -22,6 +23,7 @@ function initNavbar() {
         }
 
         navLinks.classList.remove("active");
+        hamburger.classList.remove("active");
       });
     });
 
@@ -29,6 +31,7 @@ function initNavbar() {
     document.addEventListener("click", function (e) {
       if (!navbar.contains(e.target)) {
         navLinks.classList.remove("active");
+        hamburger.classList.remove("active");
 
         navbar.querySelectorAll(".dropdown-menu").forEach(menu => {
           menu.classList.remove("show");
