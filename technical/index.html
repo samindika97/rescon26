@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Technical Programme — RESCON 2026</title>
 	<link rel="stylesheet" href="../style.css" />
-	<link rel="icon" type="image/x-icon"" href="/rescon2026/images/web/favicon.png" />
+	<link rel="icon" type="image/x-icon"" href=" /rescon2026/images/web/favicon.png" />
 
 	<style>
 		:root {
@@ -135,21 +135,77 @@
 
 		/* ── iframe content ── */
 
-		.sheet-wrapper {
-			width: 100%;
-			max-width: 1000px;
-			height: 680px;
-			margin: 0 auto;
-			overflow: hidden;
-			border-radius: 16px;
-		}
+.sheet-wrapper {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 16px;
+}
 
-		.sheet-iframe {
-			width: 100%;
-			height: 750px;
-			border: none;
-			transform: translateY(-45px);
-		}
+.sheet-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--parchment);
+    border-bottom: 1px solid rgba(22, 54, 36, 0.08);
+}
+
+.pdf-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--teal-vivid);
+    padding: 0.55rem 1.1rem;
+    border-radius: var(--r-pill);
+    text-decoration: none;
+    transition: background var(--t) var(--ease), transform var(--t) var(--ease);
+}
+
+.pdf-download-btn:hover {
+    background: var(--mahogany);
+    transform: translateY(-1px);
+}
+
+.sheet-iframe {
+    display: block;
+    width: 100%;
+    height: 750px;
+    border: none;
+    overflow: hidden;
+}
+
+/* Mobile: iframes render PDFs poorly (esp. iOS Safari), so swap to a view/download card */
+.pdf-mobile-fallback {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 3rem 1.5rem;
+    background: var(--offwhite);
+}
+
+.pdf-mobile-fallback p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    max-width: 340px;
+}
+
+@media (max-width: 768px) {
+    .sheet-iframe {
+        display: none;
+    }
+
+    .pdf-mobile-fallback {
+        display: flex;
+    }
+}
 	</style>
 </head>
 
@@ -193,20 +249,32 @@
 		</div>
 	</section>
 
-	<!-- ========== GOOGLE SHEET ========== -->
+<!-- ========== GOOGLE SHEET ========== -->
 
-	<section class="py-16 px-4">
-		<div class="max-w-7xl mx-auto">
-			<div class=" sheet-wrapper bg-white rounded-2xl shadow-lg overflow-hidden">
-				<iframe class="sheet-iframe"
-					src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRM27b9i5nrcnUf1hWeGRzIpfXab5FEXzHDtNc2vlQ4y279k1YaTCXgmg7w3q0MRA/pubhtml?gid=160594915&amp;single=true&amp;widget=true&amp;headers=false"
-					width="100%" height="700" frameborder="0">
-				</iframe>
-			</div>
+<section class="py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+        <div class="sheet-wrapper bg-white rounded-2xl shadow-lg overflow-hidden">
 
-		</div>
-	</section>
+            <div class="sheet-toolbar">
+                <a class="pdf-download-btn" href="/rescon2026/docs/Tech Programme RESCON2026.pdf" download>
+                    ⬇ Download PDF
+                </a>
+            </div>
 
+            <iframe class="sheet-iframe" src="/rescon2026/docs/Tech Programme RESCON2026.pdf#view=FitH"
+                width="100%" height="700" frameborder="0" title="RESCON 2026 Technical Programme">
+            </iframe>
+
+            <div class="pdf-mobile-fallback">
+                <p>PDF preview isn't supported on this device. Tap below to view or download the Technical Programme.</p>
+                <a class="pdf-download-btn" href="/rescon2026/docs/Tech Programme RESCON2026.pdf" target="_blank" rel="noopener">
+                    📄 View PDF
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 	<!-- ========== FOOTER ========== -->
 	<footer class="footer">
